@@ -1,4 +1,5 @@
 import { defineConfig } from '@adonisjs/shield'
+import app from '@adonisjs/core/services/app'
 
 const shieldConfig = defineConfig({
   /**
@@ -6,7 +7,7 @@ const shieldConfig = defineConfig({
    * to learn more
    */
   csp: {
-    enabled: false,
+    enabled: app.inProduction,
     directives: {},
     reportOnly: false,
   },

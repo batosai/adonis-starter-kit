@@ -12,7 +12,6 @@ export default class extends BaseSchema {
       table.string('firstname', 255).notNullable().index()
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
-      table.string('remember_me_token').nullable()
       table.json('avatar')
       table.boolean('disabled').notNullable().defaultTo(false)
 

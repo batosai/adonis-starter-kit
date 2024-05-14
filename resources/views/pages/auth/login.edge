@@ -18,6 +18,13 @@
       @!jrmc.form.input({ type:'password', class: 'input-bordered' })
     @end
 
+    @jrmc.form.control({ name: 'remember_me', label: false })
+      <div class="flex items-center">
+        @!jrmc.form.checkbox({ value: 'true' })
+        @!jrmc.form.label({ class: 'ml-2 cursor-pointer', text: 'Remember me' })
+      </div>
+    @end
+
     @!jrmc.button({ text: 'Sign in', class: 'w-full' })
   @end
 @end

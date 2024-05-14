@@ -1,0 +1,23 @@
+@layout.auth()
+  @error('E_INVALID_CREDENTIALS')
+    @!jrmc.alert.error({ text: $message })
+  @end
+
+  @jrmc.form({ action: route('auth.session.store'), error: false })
+    @jrmc.form.control({ name: 'email', class: 'w-full', label: 'Email address' })
+      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'input-bordered' })
+    @end
+
+    @jrmc.form.control({ name: 'password', class: 'w-full', label: false })
+      <div class="flex items-center justify-between">
+        @!jrmc.form.label({ text: 'Password', class: 'cursor-pointer', for: 'password' })
+        <div class="text-sm">
+          <a href="#" class="font-semibold text-primary hover:text-secondary">Forgot password?</a>
+        </div>
+      </div>
+      @!jrmc.form.input({ type:'password', class: 'input-bordered' })
+    @end
+
+    @!jrmc.button({ text: 'Sign in', class: 'w-full' })
+  @end
+@end

@@ -1,0 +1,45 @@
+login:
+  email: Your email
+  password: Your password
+  rememberMe: Remember me
+  validate: validate
+
+resetPassword:
+  password: New password
+  passwordConfirmation: Repeat password
+  validate: validate
+
+submit: Validate
+
+success:
+  session: Connected.
+  forgotPassword: You will receive an email within a few minutes telling you how to reset your password.
+  resetPassword: Your password is change with success.
+  user:
+    create: Felicitations, the user is now created.
+    edit: Felicitations, the user is now modify.
+    delete: Felicitations, the user is now deleted.
+    toggle:
+      enabled: Felicitations, the user is now enabled.
+      disabled: Felicitations, the user is now disabled.
+    forgot: An email has been sent with instructions on how to reset passwords
+  tag:
+    create: Felicitations, the tag is now created.
+    edit: Felicitations, the tag is now modify.
+    delete: Felicitations, the tag is now deleted.
+  article:
+    create: Felicitations, the article is now created.
+    edit: Felicitations, the article is now modify.
+    delete: Felicitations, the article is now deleted.
+    seo:
+      edit: Felicitations, the seo is now modify.
+  media:
+    create: Felicitations, the media is now created.
+    edit: Felicitations, the media is now modify.
+    delete: Felicitations, the media is now deleted.
+  redirect:
+    create: Felicitations, the redirect is now created.
+    edit: Felicitations, the redirect is now modify.
+    delete: Felicitations, the redirect is now deleted.
+  cache:
+    clear: Felicitations, the cache is clear.

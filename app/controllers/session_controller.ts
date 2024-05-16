@@ -1,5 +1,5 @@
-import { HttpContext } from '@adonisjs/core/http'
 import { DateTime } from 'luxon'
+import { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
 export default class SessionController {
@@ -7,7 +7,7 @@ export default class SessionController {
     return view.render('pages/auth/login')
   }
 
-  async store({ request, auth, session, response }: HttpContext) {
+  async store({ request, auth, session, i18n, response }: HttpContext) {
     const { email, password } = request.only(['email', 'password'])
 
     const user = await User.verifyCredentials(email, password)
@@ -17,7 +17,7 @@ export default class SessionController {
     user.lastLoginAt = DateTime.local()
     await user.save()
 
-    session.flash('success.message', 'success')
+    session.flash('success.message', i18n.formatMessage('form.success.session'))
 
     response.redirect('/')
   }

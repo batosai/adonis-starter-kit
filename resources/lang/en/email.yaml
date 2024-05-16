@@ -1,0 +1,7 @@
+forgotPassword:
+  subject: Password change request
+  content:
+    welcome: Welcome { username },
+    description: 'Please create new password by clicking on the button:'
+    signature: Thank you.
+    button: Create new password

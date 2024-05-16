@@ -4,27 +4,27 @@
   @end
 
   @jrmc.form({ action: route('auth.session.store'), error: false })
-    @jrmc.form.control({ name: 'email', class: 'w-full', label: 'Email address' })
-      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'input-bordered' })
+    @jrmc.form.control({ name: 'email', class: 'w-full', label: t('form.login.email') })
+      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'input-bordered bg-neutral' })
     @end
 
     @jrmc.form.control({ name: 'password', class: 'w-full', label: false })
       <div class="flex items-center justify-between">
-        @!jrmc.form.label({ text: 'Password', class: 'cursor-pointer', for: 'password' })
+        @!jrmc.form.label({ text: t('form.login.password'), class: 'cursor-pointer', for: 'password' })
         <div class="text-sm">
-          <a href="#" class="font-semibold text-primary hover:text-secondary">Forgot password?</a>
+          <a href="{{ route('auth.password.create') }}" class="font-semibold text-primary hover:text-secondary">{{ t('auth.session.forgotLink') }}</a>
         </div>
       </div>
-      @!jrmc.form.input({ type:'password', class: 'input-bordered' })
+      @!jrmc.form.input({ type:'password', class: 'input-bordered bg-neutral' })
     @end
 
     @jrmc.form.control({ name: 'remember_me', label: false })
       <div class="flex items-center">
         @!jrmc.form.checkbox({ value: 'true' })
-        @!jrmc.form.label({ class: 'ml-2 cursor-pointer', text: 'Remember me' })
+        @!jrmc.form.label({ class: 'ml-2 cursor-pointer', text: t('form.login.rememberMe') })
       </div>
     @end
 
-    @!jrmc.button({ text: 'Sign in', class: 'w-full' })
+    @!jrmc.button({ text: t('form.login.validate'), class: 'w-full' })
   @end
 @end

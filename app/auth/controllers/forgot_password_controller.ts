@@ -20,7 +20,7 @@ export default class ForgotPasswordController {
 
     session.flash('notification', {
       type: 'success',
-      message: i18n.formatMessage('form.success.forgotPassword')
+      message: i18n.formatMessage('form.success.forgotPassword'),
     })
 
     response.redirect('/auth/login')

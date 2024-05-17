@@ -21,7 +21,7 @@ export default class ResetPasswordController {
 
     session.flash('notification', {
       type: 'success',
-      message: i18n.formatMessage('form.success.resetPassword')
+      message: i18n.formatMessage('form.success.resetPassword'),
     })
 
     response.redirect('/')

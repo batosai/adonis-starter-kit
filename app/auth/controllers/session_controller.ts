@@ -19,7 +19,7 @@ export default class SessionController {
 
     session.flash('notification', {
       type: 'success',
-      message: i18n.formatMessage('form.success.session')
+      message: i18n.formatMessage('form.success.session'),
     })
 
     response.redirect('/')

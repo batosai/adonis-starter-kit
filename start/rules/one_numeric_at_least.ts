@@ -6,12 +6,7 @@ export type Options = {}
 /**
  * Implementation
  */
-async function oneNumericAtLeast(
-  value: unknown,
-  options: Options,
-  field: FieldContext
-) {
-
+async function oneNumericAtLeast(value: unknown, options: Options, field: FieldContext) {
   if (typeof value !== 'string') {
     return
   }

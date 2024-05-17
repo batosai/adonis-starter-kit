@@ -11,7 +11,8 @@ export default class ForgotPasswordNotification extends BaseMail {
 
   prepare() {
     const i18n = i18nManager.locale(i18nManager.defaultLocale)
-    const url = router.builder()
+    const url = router
+      .builder()
       .prefixUrl(env.get('URL'))
       .params({ email: this.user.email })
       .makeSigned('auth.password.reset.create', {

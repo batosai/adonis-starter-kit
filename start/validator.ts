@@ -6,10 +6,10 @@ import { oneSpecialCharacterAtLeastRule } from './rules/one_special_character_at
 
 declare module '@vinejs/vine' {
   interface VineString {
-    oneLowerCaseAtLeast(): this,
-    oneUpperCaseAtLeast(): this,
-    oneNumericAtLeast(): this,
-    oneSpecialCharacterAtLeast(): this,
+    oneLowerCaseAtLeast(): this
+    oneUpperCaseAtLeast(): this
+    oneNumericAtLeast(): this
+    oneSpecialCharacterAtLeast(): this
   }
 }
 

@@ -3,16 +3,14 @@ import 'unpoly'
 
 import 'unpoly/unpoly.css'
 
-
 // Alpine
 Alpine.start()
 
-
 // Unpoly
 
-// if (document.querySelector('meta[name="mode"]')) {
-  // up.log.enable()
-// }
+if (document.querySelector('meta[name="mode"]')) {
+  up.log.enable()
+}
 
 up.link.config.followSelectors.push('a[href]')
 up.form.config.submitSelectors.push(['form'])

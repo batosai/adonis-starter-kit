@@ -1,8 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import mail from '@adonisjs/mail/services/main'
-import { ForgotPasswordValidator } from '#validators/password_validator'
-import User from '#models/user'
-import ForgotPasswordNotification from '#mails/forgot_password_notification'
+import { ForgotPasswordValidator } from '#auth/validators/password_validator'
+import User from '#core/models/user'
+import ForgotPasswordNotification from '#auth/mails/forgot_password_notification'
 
 export default class ForgotPasswordController {
   public async create({ view }: HttpContext) {

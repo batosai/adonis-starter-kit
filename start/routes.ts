@@ -10,9 +10,9 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
 
-const SessionController = () => import('#controllers/session_controller')
-const ForgotPasswordController = () => import('#controllers/forgot_password_controller')
-const ResetPasswordController = () => import('#controllers/reset_password_controller')
+const SessionController = () => import('#auth/controllers/session_controller')
+const ForgotPasswordController = () => import('#auth/controllers/forgot_password_controller')
+const ResetPasswordController = () => import('#auth/controllers/reset_password_controller')
 
 
 router.on('/').render('pages/home')

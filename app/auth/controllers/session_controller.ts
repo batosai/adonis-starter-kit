@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { HttpContext } from '@adonisjs/core/http'
-import User from '#models/user'
+import User from '#core/models/user'
 
 export default class SessionController {
   async create({ view }: HttpContext) {

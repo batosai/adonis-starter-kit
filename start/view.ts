@@ -6,3 +6,5 @@ edge.global('app', {
   inDev: app.inDev,
   env: env.get('NODE_ENV')
 })
+
+edge.global('env', env)

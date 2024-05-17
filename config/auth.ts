@@ -1,5 +1,5 @@
 import { defineConfig } from '@adonisjs/auth'
-import { InferAuthEvents, Authenticators } from '@adonisjs/auth/types'
+import type { InferAuthEvents, Authenticators } from '@adonisjs/auth/types'
 import { sessionGuard, sessionUserProvider } from '@adonisjs/auth/session'
 
 const authConfig = defineConfig({
@@ -9,7 +9,7 @@ const authConfig = defineConfig({
       useRememberMeTokens: true,
       rememberMeTokensAge: '2 years',
       provider: sessionUserProvider({
-        model: () => import('#models/user')
+        model: () => import('#core/models/user')
       }),
     }),
   },

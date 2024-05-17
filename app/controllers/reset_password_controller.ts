@@ -19,7 +19,10 @@ export default class ResetPasswordController {
 
     await auth.use('web').login(user)
 
-    session.flash('success.message', i18n.formatMessage('form.success.resetPassword'))
+    session.flash('notification', {
+      type: 'success',
+      message: i18n.formatMessage('form.success.resetPassword')
+    })
 
     response.redirect('/')
   }

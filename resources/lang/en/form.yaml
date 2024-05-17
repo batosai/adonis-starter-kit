@@ -27,16 +27,6 @@ success:
     create: Felicitations, the tag is now created.
     edit: Felicitations, the tag is now modify.
     delete: Felicitations, the tag is now deleted.
-  article:
-    create: Felicitations, the article is now created.
-    edit: Felicitations, the article is now modify.
-    delete: Felicitations, the article is now deleted.
-    seo:
-      edit: Felicitations, the seo is now modify.
-  media:
-    create: Felicitations, the media is now created.
-    edit: Felicitations, the media is now modify.
-    delete: Felicitations, the media is now deleted.
   redirect:
     create: Felicitations, the redirect is now created.
     edit: Felicitations, the redirect is now modify.

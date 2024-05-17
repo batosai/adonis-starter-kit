@@ -17,7 +17,10 @@ export default class SessionController {
     user.lastLoginAt = DateTime.local()
     await user.save()
 
-    session.flash('success.message', i18n.formatMessage('form.success.session'))
+    session.flash('notification', {
+      type: 'success',
+      message: i18n.formatMessage('form.success.session')
+    })
 
     response.redirect('/')
   }

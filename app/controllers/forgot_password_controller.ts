@@ -18,7 +18,10 @@ export default class ForgotPasswordController {
       await mail.sendLater(new ForgotPasswordNotification(user))
     }
 
-    session.flash('success.message', i18n.formatMessage('form.success.forgotPassword'))
+    session.flash('notification', {
+      type: 'success',
+      message: i18n.formatMessage('form.success.forgotPassword')
+    })
 
     response.redirect('/auth/login')
   }

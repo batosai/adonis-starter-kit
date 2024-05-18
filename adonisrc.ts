@@ -54,8 +54,9 @@ export default defineConfig({
   |
   */
   preloads: [
-    () => import('#start/routes'),
     () => import('#start/kernel'),
+    () => import('#start/routes'),
+    () => import('#start/events'),
     () => import('#start/view'),
 
     // auth
@@ -90,10 +91,6 @@ export default defineConfig({
   },
   metaFiles: [
     {
-      pattern: 'resources/views/**/*.edge',
-      reloadServer: false,
-    },
-    {
       pattern: 'src/**/resources/views/**/*.edge',
       reloadServer: false,
     },
@@ -102,7 +99,7 @@ export default defineConfig({
       reloadServer: false,
     },
     {
-      pattern: 'resources/lang/**/*.{json,yaml,yml}',
+      pattern: 'src/**/resources/lang/**/*.{json,yaml,yml}',
       reloadServer: false,
     },
   ],

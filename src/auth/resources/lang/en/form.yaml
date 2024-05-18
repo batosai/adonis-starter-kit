@@ -1,0 +1,15 @@
+login:
+  email: Your email
+  password: Your password
+  rememberMe: Remember me
+  validate: validate
+
+resetPassword:
+  password: New password
+  passwordConfirmation: Repeat password
+  validate: validate
+
+success:
+  session: Connected.
+  forgotPassword: You will receive an email within a few minutes telling you how to reset your password.
+  resetPassword: Your password is change with success.

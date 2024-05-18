@@ -6,7 +6,7 @@ import ForgotPasswordNotification from '#auth/mails/forgot_password_notification
 
 export default class ForgotPasswordController {
   public async create({ view }: HttpContext) {
-    return view.render('pages/auth/forgot-password')
+    return view.render('auth::pages/auth/forgot-password')
   }
 
   public async store({ request, response, session, i18n }: HttpContext) {

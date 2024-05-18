@@ -4,7 +4,7 @@ import User from '#core/models/user'
 
 export default class SessionController {
   async create({ view }: HttpContext) {
-    return view.render('pages/auth/login')
+    return view.render('auth::pages/auth/login')
   }
 
   async store({ request, auth, session, i18n, response }: HttpContext) {

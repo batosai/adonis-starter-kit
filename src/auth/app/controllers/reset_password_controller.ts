@@ -7,7 +7,7 @@ export default class ResetPasswordController {
     const isSignatureValid = request.hasValidSignature()
     const email = params.email
 
-    return view.render('pages/auth/reset-password', { isSignatureValid, email })
+    return view.render('auth::pages/auth/reset-password', { isSignatureValid, email })
   }
 
   public async store({ request, response, auth, session, i18n }: HttpContext) {

@@ -14,8 +14,8 @@
     "typecheck": "tsc --noEmit"
   },
   "imports": {
-    "#core/*": "./app/core/*.js",
-    "#auth/*": "./app/auth/*.js",
+    "#core/*": "./src/core/app/*.js",
+    "#auth/*": "./src/auth/app/*.js",
     "#database/*": "./database/*.js",
     "#tests/*": "./tests/*.js",
     "#start/*": "./start/*.js",
@@ -64,8 +64,8 @@
   },
   "hotHook": {
     "boundaries": [
-      "./app/controllers/**/*.ts",
-      "./app/middleware/*.ts"
+      "./src/**/controllers/**/*.ts",
+      "./src/**/middleware/*.ts"
     ]
   },
   "eslintConfig": {

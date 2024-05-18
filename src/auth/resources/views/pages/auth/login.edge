@@ -1,4 +1,4 @@
-@layout.auth()
+@component('auth::components/layouts/auth')
   @error('E_INVALID_CREDENTIALS')
     @!jrmc.alert.error({ text: $message })
   @end

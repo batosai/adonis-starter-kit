@@ -56,8 +56,12 @@ export default defineConfig({
   preloads: [
     () => import('#start/routes'),
     () => import('#start/kernel'),
-    () => import('#start/validator'),
     () => import('#start/view'),
+
+    // auth
+    () => import('./src/auth/start/routes.js'),
+    () => import('./src/auth/start/view.js'),
+    () => import('./src/auth/start/validator.js'),
   ],
 
   /*
@@ -87,6 +91,10 @@ export default defineConfig({
   metaFiles: [
     {
       pattern: 'resources/views/**/*.edge',
+      reloadServer: false,
+    },
+    {
+      pattern: 'src/**/resources/views/**/*.edge',
       reloadServer: false,
     },
     {

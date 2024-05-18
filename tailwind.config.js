@@ -3,7 +3,10 @@
 import edgeComponent from '@jrmc/edge-components/tailwind.config'
 
 export default {
-  content: ['./resources/views/**/*.edge', ...edgeComponent.content],
+  content: [
+    './src/**/resources/**/*.edge',
+    ...edgeComponent.content
+  ],
   theme: {
     extend: {},
   },

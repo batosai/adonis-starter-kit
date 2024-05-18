@@ -23,7 +23,7 @@ export default class ForgotPasswordNotification extends BaseMail {
       .from(env.get('EMAIL_FROM'), 'Adonis')
       .to(this.user.email, this.user.fullname)
       .subject(i18n.formatMessage('email.forgotPassword.subject'))
-      .htmlView('emails/auth/forgot-password', {
+      .htmlView('auth::emails/auth/forgot-password', {
         user: this.user,
         url,
       })

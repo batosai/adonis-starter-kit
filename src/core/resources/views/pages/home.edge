@@ -8,9 +8,20 @@
   @vite(['src/core/resources/css/app.css', 'src/core/resources/js/app.js'])
 </head>
 <body>
-  <h1> It Works! </h1>
 
-  @!jrmc.button({ text: 'Button' })
+  <div class="flex justify-center">
+
+    @eval(await auth.check())
+
+    @if(auth.isAuthenticated)
+      @jrmc.form({action: route('auth.session.destroy')})
+        @!jrmc.button({ text: 'Logout' })
+      @end
+    @else
+      <a href="{{ route('auth.session.create') }}" class="btn">Login</a>
+    @end
+
+  </div>
 
 </body>
 </html>

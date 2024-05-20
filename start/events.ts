@@ -6,15 +6,9 @@ import logger from '@adonisjs/core/services/logger'
 import db from '@adonisjs/lucid/services/db'
 import string from '@adonisjs/core/helpers/string'
 
-emitter.on('db:query', function (query) {
-  if (app.inProduction) {
-    logger.debug(query.sql)
-  } else {
-    db.prettyPrint(query)
-  }
-})
-
 if (app.inDev) {
+  emitter.on('db:query', db.prettyPrint)
+
   emitter.on('http:request_completed', (event) => {
     const method = event.ctx.request.method()
     const url = event.ctx.request.url(true)

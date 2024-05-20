@@ -7,12 +7,8 @@ export type Options = {}
  * Implementation
  */
 async function oneLowerCaseAtLeast(value: unknown, options: Options, field: FieldContext) {
-  if (typeof value !== 'string') {
-    return
-  }
-
   const regex = new RegExp('(?=.*[a-z])')
-  if (!regex.test(value)) {
+  if (!regex.test(String(value))) {
     field.report(
       'The {{ field }} must contain at least one lowercase letter',
       'oneLowerCaseAtLeast',

@@ -1,5 +1,5 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-import Roles from '#enums/roles'
+import Roles from '#core/enums/roles'
 
 export default class extends BaseSchema {
   protected tableName = 'users'

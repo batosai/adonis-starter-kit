@@ -1,6 +1,6 @@
 import { test } from '@japa/runner'
 
-test.group('Validators forgot password', () => {
+test.group('Forgot password', () => {
   test('empty email', async ({ client, route }) => {
     const response = await client
       .post(route('auth.password.store'))

@@ -4,7 +4,7 @@ shared:
   messages:
     # required: custom message
     # email.required: custom message for email
-    oneLowerCaseAtLeast: The {{ field }} field must contain at least one lowercase letter
-    oneUpperCaseAtLeast: The {{ field }} field must contain at least one uppercase letter
-    oneNumericAtLeast: The {{ field }} field must contain at least one digit
-    oneSpecialCharacterAtLeast: The {{ field }} field must contain at least one special character
+    oneLowerCaseAtLeast: The { field } field must contain at least one lowercase letter
+    oneUpperCaseAtLeast: The { field } field must contain at least one uppercase letter
+    oneNumericAtLeast: The { field } field must contain at least one digit
+    oneSpecialCharacterAtLeast: The { field } field must contain at least one special character

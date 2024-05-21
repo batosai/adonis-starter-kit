@@ -7,6 +7,10 @@ import testUtils from '@adonisjs/core/services/test_utils'
 import { shieldApiClient } from '@adonisjs/shield/plugins/api_client'
 import { sessionApiClient } from '@adonisjs/session/plugins/api_client'
 import { authApiClient } from '@adonisjs/auth/plugins/api_client'
+import { browserClient } from '@japa/browser-client'
+import { firefox } from 'playwright'
+import env from '#start/env'
+
 
 import i18n from '#tests/plugins/i18n'
 
@@ -25,6 +29,16 @@ export const plugins: Config['plugins'] = [
   sessionApiClient(app),
   authApiClient(app),
   shieldApiClient(),
+  browserClient({
+    runInSuites: ['browser'],
+    async launcher(options) {
+      return firefox.launch({
+        ...options,
+        headless: env.get('TEST_HEADLESS'),
+        slowMo: 300,
+      })
+    },
+  }),
   i18n()
 ]
 

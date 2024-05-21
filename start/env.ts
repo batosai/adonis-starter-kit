@@ -36,4 +36,6 @@ export default await Env.create(new URL('../', import.meta.url), {
   URL: Env.schema.string(),
 
   EMAIL_FROM: Env.schema.string(),
+
+  TEST_HEADLESS: Env.schema.boolean()
 })

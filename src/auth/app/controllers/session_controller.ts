@@ -14,6 +14,15 @@ export default class SessionController {
 
     await auth.use('web').login(user, !!request.input('remember_me'))
 
+    if (user?.disabled) {
+      session.flash('notification', {
+        type: 'error',
+        message: i18n.formatMessage('auth.E_INVALID_DISABLED')
+      })
+      session.clear()
+      return response.redirect('/auth/login')
+    }
+
     user.lastLoginAt = DateTime.local()
     await user.save()
 

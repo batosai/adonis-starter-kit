@@ -1,0 +1,18 @@
+@flashMessage('notification')
+  @jrmc.toast({
+    class: 'whitespace-normal',
+    'x-data': '{ open: true }',
+    'x-show': 'open',
+    'x-transition.duration.500ms': '',
+    'x-init': 'setTimeout(() => open = false, 5000);setTimeout(() => $el.remove(), 6000)',
+  })
+    <div class="flex flex-col max-w-md p-4 bg-neutral shadow-md hover:shodow-lg rounded-2xl">
+      <div class="flex items-center justify-between">
+        <div class="flex flex-col ml-3">
+          <div class="font-medium text-primary capitalize">{{ $message.type }}</div>
+          <p class="text-sm text-neutral-content mt-1">{{ $message.message }}</p>
+        </div>
+      </div>
+    </div>
+  @end
+@end

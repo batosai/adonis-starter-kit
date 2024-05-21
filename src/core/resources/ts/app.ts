@@ -1,7 +1,13 @@
-import Alpine from 'alpinejs'
+import { Alpine as AlpineType } from 'alpinejs'
 import 'unpoly'
 
 import 'unpoly/unpoly.css'
+
+declare var up: any
+declare var document: any
+declare global {
+  var Alpine: AlpineType
+}
 
 // Alpine
 Alpine.start()

@@ -32,6 +32,7 @@
     "@japa/plugin-adonisjs": "^3.0.1",
     "@japa/runner": "^3.1.4",
     "@swc/core": "^1.5.3",
+    "@types/alpinejs": "^3.13.10",
     "@types/luxon": "^3.4.2",
     "@types/node": "^20.12.10",
     "alpinejs": "^3.13.10",

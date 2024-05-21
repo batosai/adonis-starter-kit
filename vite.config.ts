@@ -10,7 +10,7 @@ export default defineConfig({
        */
       entrypoints: [
         'src/core/resources/css/app.css',
-        'src/core/resources/js/app.js',
+        'src/core/resources/ts/app.ts',
       ],
 
       /**

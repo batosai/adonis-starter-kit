@@ -1,10 +1,9 @@
 // https://docs.adonisjs.com/guides/references/events
-
-import emitter from '@adonisjs/core/services/emitter'
+import string from '@adonisjs/core/helpers/string'
 import app from '@adonisjs/core/services/app'
+import emitter from '@adonisjs/core/services/emitter'
 import logger from '@adonisjs/core/services/logger'
 import db from '@adonisjs/lucid/services/db'
-import string from '@adonisjs/core/helpers/string'
 
 if (app.inDev) {
   emitter.on('db:query', db.prettyPrint)

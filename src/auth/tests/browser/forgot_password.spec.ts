@@ -1,5 +1,5 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
+import { test } from '@japa/runner'
 import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Login page', (group) => {
@@ -21,9 +21,7 @@ test.group('Login page', (group) => {
     await page.locator('text=validate').click()
 
     await page.assertElementsCount(
-      await page.getByText(
-        i18n.formatMessage('form.success.forgotPassword')
-      ),
+      await page.getByText(i18n.formatMessage('form.success.forgotPassword')),
       1
     )
   })

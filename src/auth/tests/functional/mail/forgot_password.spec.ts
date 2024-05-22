@@ -1,8 +1,8 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
 import mail from '@adonisjs/mail/services/main'
-import { UserFactory } from '#database/factories/user_factory'
+import { test } from '@japa/runner'
 import ForgotPasswordNotification from '#auth/mails/forgot_password_notification'
+import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Forgot password mailer', (group) => {
   group.each.setup(() => testUtils.db().withGlobalTransaction())
@@ -36,8 +36,7 @@ test.group('Forgot password mailer', (group) => {
       .withCsrfToken()
 
     mails.assertQueued(ForgotPasswordNotification, ({ message }) => {
-      return message
-        .hasSubject(i18n.formatMessage('email.forgotPassword.subject'))
+      return message.hasSubject(i18n.formatMessage('email.forgotPassword.subject'))
     })
 
     mail.restore()

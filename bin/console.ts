@@ -10,9 +10,8 @@
 | has "options.startApp" flag set to true.
 |
 */
-
-import 'reflect-metadata'
 import { Ignitor, prettyPrintError } from '@adonisjs/core'
+import 'reflect-metadata'
 
 /**
  * URL to the application root. AdonisJS need it to resolve

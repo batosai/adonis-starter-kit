@@ -1,5 +1,5 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
+import { test } from '@japa/runner'
 import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Reset password', (group) => {
@@ -10,9 +10,7 @@ test.group('Reset password', (group) => {
       .get(route('auth.password.reset.create', { email: 'virk@adonisjs.com' }))
       .withCsrfToken()
 
-    response.assertTextIncludes(
-      i18n.formatMessage('auth.session.invalidResetLink')
-    )
+    response.assertTextIncludes(i18n.formatMessage('auth.session.invalidResetLink'))
   })
 
   test('empty fields', async ({ client, route }) => {
@@ -27,12 +25,8 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertFlashMessage('errors', {
-      email: [
-        'The email field must be defined'
-      ],
-      password: [
-        'The password field must be defined'
-      ],
+      email: ['The email field must be defined'],
+      password: ['The password field must be defined'],
     })
   })
 
@@ -47,9 +41,7 @@ test.group('Reset password', (group) => {
       .redirects(0)
       .withCsrfToken()
 
-    response.assertValidationErrors('email', [
-      'The email field must be a valid email address'
-    ])
+    response.assertValidationErrors('email', ['The email field must be a valid email address'])
   })
 
   test('missing password', async ({ client, route }) => {
@@ -62,9 +54,7 @@ test.group('Reset password', (group) => {
       .redirects(0)
       .withCsrfToken()
 
-    response.assertValidationErrors('password', [
-      'The password field must be defined',
-    ])
+    response.assertValidationErrors('password', ['The password field must be defined'])
   })
 
   test('invalid min length password', async ({ client, route }) => {
@@ -80,12 +70,13 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      'The password field must have at least 8 characters'
+      'The password field must have at least 8 characters',
     ])
   })
 
   test('invalid max length password', async ({ client, route }) => {
-    const password = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+    const password =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     const user = await UserFactory.create()
     const response = await client
       .post(route('auth.password.reset.store'))
@@ -98,7 +89,7 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      'The password field must not be greater than 255 characters'
+      'The password field must not be greater than 255 characters',
     ])
   })
 
@@ -115,11 +106,9 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      i18n.formatMessage(
-        'validator.shared.messages.oneLowerCaseAtLeast', {
-          field: 'password',
-        }
-      )
+      i18n.formatMessage('validator.shared.messages.oneLowerCaseAtLeast', {
+        field: 'password',
+      }),
     ])
   })
 
@@ -136,11 +125,9 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      i18n.formatMessage(
-        'validator.shared.messages.oneNumericAtLeast', {
-          field: 'password',
-        }
-      )
+      i18n.formatMessage('validator.shared.messages.oneNumericAtLeast', {
+        field: 'password',
+      }),
     ])
   })
 
@@ -157,11 +144,9 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      i18n.formatMessage(
-        'validator.shared.messages.oneSpecialCharacterAtLeast', {
-          field: 'password',
-        }
-      )
+      i18n.formatMessage('validator.shared.messages.oneSpecialCharacterAtLeast', {
+        field: 'password',
+      }),
     ])
   })
 
@@ -178,11 +163,9 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      i18n.formatMessage(
-        'validator.shared.messages.oneUpperCaseAtLeast', {
-          field: 'password',
-        }
-      )
+      i18n.formatMessage('validator.shared.messages.oneUpperCaseAtLeast', {
+        field: 'password',
+      }),
     ])
   })
 
@@ -199,7 +182,7 @@ test.group('Reset password', (group) => {
       .withCsrfToken()
 
     response.assertValidationErrors('password', [
-      'The password field and password_confirmation field must be the same'
+      'The password field and password_confirmation field must be the same',
     ])
   })
 })

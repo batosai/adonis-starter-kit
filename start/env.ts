@@ -8,7 +8,6 @@
 | to JavaScript data types.
 |
 */
-
 import { Env } from '@adonisjs/core/env'
 
 export default await Env.create(new URL('../', import.meta.url), {
@@ -37,5 +36,5 @@ export default await Env.create(new URL('../', import.meta.url), {
 
   EMAIL_FROM: Env.schema.string(),
 
-  TEST_HEADLESS: Env.schema.boolean()
+  TEST_HEADLESS: Env.schema.boolean(),
 })

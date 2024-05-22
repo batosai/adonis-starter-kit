@@ -10,9 +10,7 @@ test.group('Forgot password', () => {
       .redirects(0)
       .withCsrfToken()
 
-    response.assertValidationErrors('email', [
-      'The email field must be defined'
-    ])
+    response.assertValidationErrors('email', ['The email field must be defined'])
   })
 
   test('invalid email', async ({ client, route }) => {
@@ -24,9 +22,7 @@ test.group('Forgot password', () => {
       .redirects(0)
       .withCsrfToken()
 
-      response.assertValidationErrors('email', [
-        'The email field must be a valid email address'
-      ])
+    response.assertValidationErrors('email', ['The email field must be a valid email address'])
   })
 
   test('valid email', async ({ client, route, i18n }) => {
@@ -40,7 +36,7 @@ test.group('Forgot password', () => {
 
     response.assertFlashMessage('notification', {
       type: 'success',
-      message: i18n.formatMessage('form.success.forgotPassword')
+      message: i18n.formatMessage('form.success.forgotPassword'),
     })
   })
 })

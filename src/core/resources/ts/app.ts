@@ -1,6 +1,5 @@
 import { Alpine as AlpineType } from 'alpinejs'
 import 'unpoly'
-
 import 'unpoly/unpoly.css'
 
 declare var up: any

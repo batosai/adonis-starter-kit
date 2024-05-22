@@ -1,5 +1,5 @@
-import { defineConfig } from '@adonisjs/shield'
 import app from '@adonisjs/core/services/app'
+import { defineConfig } from '@adonisjs/shield'
 
 const shieldConfig = defineConfig({
   /**

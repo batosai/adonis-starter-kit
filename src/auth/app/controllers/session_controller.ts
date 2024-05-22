@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon'
 import { HttpContext } from '@adonisjs/core/http'
+import { DateTime } from 'luxon'
 import User from '#core/models/user'
 
 export default class SessionController {
@@ -17,7 +17,7 @@ export default class SessionController {
     if (user?.disabled) {
       session.flash('notification', {
         type: 'error',
-        message: i18n.formatMessage('auth.E_INVALID_DISABLED')
+        message: i18n.formatMessage('auth.E_INVALID_DISABLED'),
       })
       session.clear()
       return response.redirect('/auth/login')

@@ -1,8 +1,8 @@
-import i18nManager from '@adonisjs/i18n/services/main'
 import router from '@adonisjs/core/services/router'
+import i18nManager from '@adonisjs/i18n/services/main'
 import { BaseMail } from '@adonisjs/mail'
-import env from '#start/env'
 import User from '#core/models/user'
+import env from '#start/env'
 
 export default class ForgotPasswordNotification extends BaseMail {
   constructor(private user: User) {

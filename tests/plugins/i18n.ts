@@ -1,6 +1,6 @@
-import { TestContext } from '@japa/runner/core'
-import i18nManager from '@adonisjs/i18n/services/main'
 import type { I18n } from '@adonisjs/i18n'
+import i18nManager from '@adonisjs/i18n/services/main'
+import { TestContext } from '@japa/runner/core'
 
 declare module '@japa/runner/core' {
   interface TestContext {

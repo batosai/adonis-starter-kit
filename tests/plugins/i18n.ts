@@ -10,11 +10,11 @@ declare module '@japa/runner/core' {
 
 export default function i18n() {
   return function () {
-    const i18n = i18nManager.locale(i18nManager.defaultLocale)
+    const manager = i18nManager.locale(i18nManager.defaultLocale)
     TestContext.getter(
       'i18n',
       function (this: TestContext) {
-        return i18n
+        return manager
       },
       true
     )

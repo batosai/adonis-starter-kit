@@ -12,7 +12,7 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
 })
 
 export default class User extends compose(BaseModel, AuthFinder) {
-  public static selfAssignPrimaryKey = true
+  static selfAssignPrimaryKey = true
   static rememberMeTokens = DbRememberMeTokensProvider.forModel(User)
 
   @column({ isPrimary: true })
@@ -49,14 +49,14 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare updatedAt: DateTime | null
 
   @computed()
-  public get fullname() {
+  get fullname() {
     return `${this.firstname} ${this.lastname}`
   }
 
   // Hooks
 
   @beforeCreate()
-  public static assignUuid(user: User) {
+  static assignUuid(user: User) {
     user.id = crypto.randomUUID()
   }
 }

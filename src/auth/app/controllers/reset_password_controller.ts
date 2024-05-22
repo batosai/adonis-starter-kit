@@ -3,14 +3,14 @@ import { ResetPasswordValidator } from '#auth/validators/password_validator'
 import User from '#core/models/user'
 
 export default class ResetPasswordController {
-  public async create({ request, view, params }: HttpContext) {
+  async create({ request, view, params }: HttpContext) {
     const isSignatureValid = request.hasValidSignature()
     const email = params.email
 
     return view.render('auth::pages/auth/reset-password', { isSignatureValid, email })
   }
 
-  public async store({ request, response, auth, session, i18n }: HttpContext) {
+  async store({ request, response, auth, session, i18n }: HttpContext) {
     const { email, password } = await request.validateUsing(ResetPasswordValidator)
 
     const user = await User.findByOrFail('email', email)

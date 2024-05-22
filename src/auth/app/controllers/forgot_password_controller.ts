@@ -5,11 +5,11 @@ import { ForgotPasswordValidator } from '#auth/validators/password_validator'
 import User from '#core/models/user'
 
 export default class ForgotPasswordController {
-  public async create({ view }: HttpContext) {
+  async create({ view }: HttpContext) {
     return view.render('auth::pages/auth/forgot-password')
   }
 
-  public async store({ request, response, session, i18n }: HttpContext) {
+  async store({ request, response, session, i18n }: HttpContext) {
     const payload = await request.validateUsing(ForgotPasswordValidator)
 
     const user = await User.findBy('email', payload.email)

@@ -1,6 +1,6 @@
 import { defineConfig } from '@adonisjs/auth'
 import { sessionGuard, sessionUserProvider } from '@adonisjs/auth/session'
-import type { Authenticators, InferAuthEvents } from '@adonisjs/auth/types'
+import type { Authenticators as AuthenticatorsType, InferAuthEvents } from '@adonisjs/auth/types'
 
 const authConfig = defineConfig({
   default: 'web',
@@ -25,5 +25,5 @@ declare module '@adonisjs/auth/types' {
   interface Authenticators extends InferAuthenticators<typeof authConfig> {}
 }
 declare module '@adonisjs/core/types' {
-  interface EventsList extends InferAuthEvents<Authenticators> {}
+  interface EventsList extends InferAuthEvents<AuthenticatorsType> {}
 }

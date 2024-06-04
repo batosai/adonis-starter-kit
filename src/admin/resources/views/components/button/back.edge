@@ -1,0 +1,12 @@
+@if(up.isDrawer())
+  @jrmc.button({ 'up-dismiss': 'true', class: 'btn-circle btn-sm btn-primary mr-2' })
+    @svg('tabler:arrow-left')
+  @end
+@else
+  @jrmc.button.link({
+    href: $props.href,
+    class: 'btn-circle btn-sm btn-primary mr-2',
+  })
+    @svg('tabler:arrow-left')
+  @end
+@end

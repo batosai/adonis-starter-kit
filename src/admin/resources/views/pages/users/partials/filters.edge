@@ -1,0 +1,49 @@
+@admin.filter({ name: 'users', showBlank: true })
+  @jrmc.form.control({ name: 'order', class: '!m-0 w-full', label: false })
+    @!jrmc.form.select({ options: [
+        { text: t('filters.order'), value: '' },
+        { text: t('filters.users.firstname+asc'), value: 'firstname+asc' },
+        { text: t('filters.users.firstname+desc'), value: 'firstname+desc' },
+        { text: t('filters.users.email+asc'), value: 'email+asc' },
+        { text: t('filters.users.email+desc'), value: 'email+desc' },
+        { text: t('filters.users.createdAt+asc'), value: 'createdAt+asc' },
+        { text: t('filters.users.createdAt+desc'), value: 'createdAt+desc' },
+      ],
+      class: 'sm:mr-4',
+      'up-autosubmit': 'true'
+    })
+  @end
+
+  <div class="join my-2 sm:my-0">
+    @jrmc.form.control({ name: 'search', class: '!m-0 w-full sm:w-auto', label: false })
+      @!jrmc.form.input({
+        placeholder: t('filters.users.search'),
+        class: 'join-item',
+      })
+    @end
+    @!jrmc.button.input({ text: t('filters.users.search'), type: 'submit', class: 'btn-neutral join-item' })
+  </div>
+
+  @slot('extra')
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-3">
+      @jrmc.form.control({ name: 'role', class: 'col-span-2' })
+        @!jrmc.form.select({ options: [
+            { text: t('filters.users.all'), value: '' },
+            { text: t('models.role/name.admin'), value: Roles.ADMIN },
+            { text: t('models.role/name.user'), value: Roles.USER },
+          ],
+          '@change': 'up.submit($el.closest(\'form\'))'
+        })
+      @end
+
+      @jrmc.form.control({ name: 'disabled', label: t('models.user/status.disabled') })
+        @jrmc.form.label({ class: 'cursor-pointer', text: '' })
+          @!jrmc.form.toggle({
+            value: 'true',
+            '@change': 'up.submit($el.closest(\'form\'))'
+          })
+        @end
+      @end
+    </div>
+  @end
+@end

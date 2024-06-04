@@ -1,0 +1,29 @@
+@layout.default({ 'data-theme': 'cupcake' })
+  @slot('head')
+    <title>Admin</title>
+    <meta name="description" content="" />
+  @end
+
+  <body>
+    @jrmc.drawer({ class: 'drawer-mobile lg:drawer-open' })
+      @jrmc.drawer.content()
+        <main>
+          <div class="flex flex-col {{ !up.isModal() ? 'min-h-screen' : '' }} {{ up.isDrawer() ? 'pb-safe-offset-4' : 'pb-safe-offset-16' }}">
+            @!admin.bottomNavigation({ class: 'lg:hidden'})
+            {{{ await $slots.main() }}}
+          </div>
+        </main>
+      @end
+
+      @jrmc.drawer.side({ class: 'overflow-y-auto h-full w-80 bg-base-200 pt-safe' })
+        @!admin.sidebar()
+      @end
+    @end
+
+    @if($slots.foot !== undefined)~
+      {{{ await $slots.foot() }}}
+    @end~
+
+    @!notifications()
+  </body>
+@end

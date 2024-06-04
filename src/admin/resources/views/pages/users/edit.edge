@@ -1,0 +1,53 @@
+@admin.layout()
+  @!admin.breadcrumb({
+    items: [
+      { label: t('admin.sidebar.dashboard'), link: route('admin.dashboard') },
+      { label: t('admin.sidebar.users'), link: route('admin.users.index') },
+      { label: t('admin.action.edit') }
+    ]
+  })
+
+  @admin.section()
+    @admin.section.content({ title: t('admin.user.title.edit'), description: t('admin.user.description.edit'), href: route('admin.users.index')})
+      @jrmc.form({ id: 'edit_user', class: 'md:col-span-2', action: route('admin.users.update', user, {
+        qs: {
+          _method: 'PUT'
+        }
+      }),
+      enctype: 'multipart/form-data',
+      error: false,
+      object: user })
+        @include('admin::pages/users/partials/form')
+        @admin.section.action()
+          @!jrmc.button.input({ text: t('form.submit'), type: 'submit', form: 'edit_user', class: 'btn-primary normal-case' })
+        @end
+      @end
+    @end
+
+    @can('UserPolicy.forgot', user)
+      @admin.section.content({ title: t('admin.user.title.forgot'), description: t('admin.user.description.forgot') })
+        @admin.section.action()
+          @!jrmc.button.link({ text: t('admin.user.button.forgot'), href: route('admin.users.forgot.password', user), class: 'btn-info normal-case', 'data-color-button': 'btn-info', 'up-confirm': t('admin.action.confirm'), 'up-method': 'POST' })
+        @end
+      @end
+    @end
+
+    @can('UserPolicy.disabled', user)
+      @admin.section.content({ title: user.disabled ? t('admin.user.title.enable') : t('admin.user.title.disable'), description: user.disabled ? t('admin.user.description.disable') : t('admin.user.description.enable') })
+        @admin.section.action()
+          @!jrmc.button.link({ text: user.disabled ? t('admin.user.button.enable') : t('admin.user.button.disable'), href: route('admin.users.toggle.disabled', user, { qs: { _method: 'PATCH' } }), class: 'btn-warning normal-case', 'data-color-button': 'btn-warning', 'up-confirm': t('admin.action.confirm'), 'up-method': 'PATCH' })
+        @end
+      @end
+    @end
+
+    @can('UserPolicy.delete', user)
+      @admin.section.content({ title: t('admin.user.title.delete'), description: t('admin.user.description.delete') })
+        @admin.section.action()
+          @!jrmc.button.link({ text: t('admin.user.button.delete'), href: route('admin.users.destroy', user, { qs: { _method: 'DELETE' } }), class: 'btn-error normal-case', 'data-color-button': 'btn-error', 'up-confirm': t('admin.action.confirm'), 'up-method': 'DELETE' })
+        @end
+      @end
+    @end
+
+  @end
+
+@end

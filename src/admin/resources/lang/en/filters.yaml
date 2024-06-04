@@ -1,0 +1,27 @@
+filters: Filters
+order: Order
+reset: Clear all
+results: '{itemsCount, plural,
+  =0 {no&nbsp;result}
+  one {1&nbsp;result}
+  other {#&nbsp;results}
+  }'
+
+users:
+  page: Page
+  search: Search
+  role: Role
+  enabled: Enabled
+  disabled: Disabled
+  order: Order
+  true: 'On'
+  all: All
+  firstname+asc: Ascending name
+  firstname+desc: Descending name
+  email+asc: Ascending email
+  email+desc: Descending email
+  createdAt+asc: Ascending date
+  createdAt+desc: Descending date
+  #roles
+  admin: Admin
+  user: User

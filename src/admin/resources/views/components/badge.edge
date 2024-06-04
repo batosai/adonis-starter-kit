@@ -1,0 +1,15 @@
+<div class="inline-block">
+  <div class="flex flex-wrap items-center">
+    <span class="m-1 inline-flex items-center rounded-full bg-neutral py-1.5 pl-3 {{ action ? 'pr-1' : 'pr-3' }} text-sm font-medium text-neutral-content">
+      <span>
+        {{{ await $slots.main() || text || '' }}}
+      </span>
+      @if(action)~
+        @jrmc.button.link({ class: 'btn-xs btn-ghost btn-circle ml-1', href: action})
+          <span class="sr-only">Remove filter for Objects</span>
+          @!svg('tabler:x', { width: 10, height: 10 })
+        @end
+      @end~
+    </span>
+  </div>
+</div>

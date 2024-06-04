@@ -1,0 +1,43 @@
+@jrmc.form.control({ name: 'lastname', label: t('models.user.lastname'), required: true, hint: t('models.user.lastname/hint') })
+  @!jrmc.form.input()
+@end
+
+@jrmc.form.control({ name: 'firstname', label: t('models.user.firstname'), required: true, hint: t('models.user.firstname/hint') })
+  @!jrmc.form.input()
+@end
+
+@jrmc.form.control({ name: 'email', required: true })
+  @!jrmc.form.input()
+@end
+
+@can('UserPolicy.role', user)
+  @jrmc.form.control({ name: 'role', required: true })
+    @!jrmc.form.select({ options: [
+        { text: t('models.role/name.user'), value: Roles.USER },
+        { text: t('models.role/name.admin'), value: Roles.ADMIN },
+      ],
+      class: 'input-bordered',
+    })
+  @end
+@end
+
+@jrmc.form.control({ name: 'avatar' })
+  @!jrmc.form.file()
+@end
+
+@if(user && user.avatar)
+  <img
+    class="object-cover w-40 mt-2"
+    src="{{ user.avatar.variants?.thumbnail?.url }}"
+    alt="variants?.thumbnail?.url"
+    loading="lazy"
+  />
+@end
+
+@jrmc.form.control({ name: 'password', label: t('models.user.password') })
+  @!jrmc.form.input({ type: 'password' })
+@end
+
+@jrmc.form.control({ name: 'password_confirmation', label: t('models.user.password_confirmation') })
+  @!jrmc.form.input({ type: 'password' })
+@end

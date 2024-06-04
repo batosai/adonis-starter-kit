@@ -1,0 +1,61 @@
+@inject({
+  object: session.get(`${name}Filter`),
+  translator: $context?.translator ? $context?.translator : { prefix: '', t: (k) => k }
+})
+
+<div x-data="{ open: false }">
+  @jrmc.form({ method: 'GET', action: route(`admin.${name}.index`), error: false, csrf: false, object: session.get(`${name}Filter`) })
+    <div class="flex flex-col sm:flex-row bg-base-100 py-2 items-center">
+      @if(($props.has('showBlank') && $props.showBlank) || session.has(`${name}Filter`))
+        <div class="flex items-center">
+          @jrmc.button({ type: 'button', class: 'btn-ghost normal-case', '@click': 'open = !open', 'aria-label': 'filters' })
+            @svg('tabler:filter')
+            @if(session.has(`${name}Filter`))
+              {{ Object.keys(session.get(`${name}Filter`, {})).length }}
+            @end
+            {{ t('filters.filters') }}
+          @end
+
+          @if(session.has(`${name}Filter`))~
+            <div aria-hidden="true" class="h-5 w-px bg-gray-300"></div>
+
+            @jrmc.button.link({ class: 'btn-ghost normal-case', href: route(`admin.${name}.index`, {}, { qs: { reset: 'all' }}), 'aria-label': t('filters.reset') })
+              {{ t('filters.reset') }}
+            @end
+          @end~
+        </div>
+      @end
+
+      <div class="flex-1"></div>
+
+      <div class="flex flex-col sm:flex-none w-full sm:w-auto sm:flex-none sm:flex-row">
+        {{{ await $slots.main() }}}
+      </div>
+    </div>
+
+    <div class="pb-3" x-show="open">
+      <div class="grid sm:grid-cols-2 sm:divide-x dark:divide-white/10 divide-neutral">
+        @if($slots.extra !== undefined)~
+          <div class="md:px-4">
+            {{{ await $slots.extra() }}}
+          </div>
+        @endif~
+
+        <div class="md:px-4">
+          @each((filter, index) in session.get(`${name}Filter`, {}))
+            @if(filter)
+              @admin.badge({ action: route(`admin.${name}.index`, {}, { qs: { reset: index }}) })
+                {{ t(`filters.${name}.${index}`) }}:
+                @if(['search', 'page'].includes(index))
+                  {{ filter }}
+                @else
+                  {{ t(`filters.${name}.${filter}`) }}
+                @end
+              @end
+            @end
+          @end
+        </div>
+      </div>
+    </div>
+  @end
+</div>

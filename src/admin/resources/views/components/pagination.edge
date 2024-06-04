@@ -1,0 +1,9 @@
+@if ($props.object.lastPage > 1)
+  <div class="w-full text-center my-5 hidden sm:block">
+    @!jrmc.pagination({ object: $props.object })
+  </div>
+  <div class="w-full text-center my-5 sm:hidden">
+    @!jrmc.pagination.light({ object: $props.object })
+  </div>
+@end
+

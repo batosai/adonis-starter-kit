@@ -1,0 +1,10 @@
+success:
+  user:
+    create: Felicitations, the user is now created.
+    edit: Felicitations, the user is now modify.
+    delete: Felicitations, the user is now deleted.
+    toggle:
+      enabled: Felicitations, the user is now enabled.
+      disabled: Felicitations, the user is now disabled.
+    forgot: An email has been sent with instructions on how to reset passwords
+

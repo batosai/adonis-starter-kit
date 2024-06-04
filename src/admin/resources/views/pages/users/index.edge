@@ -1,0 +1,67 @@
+@admin.layout()
+  @!admin.breadcrumb({
+    items: [
+      { label: t('admin.sidebar.dashboard'), link: route('admin.dashboard') },
+      { label: t('admin.sidebar.users') }
+    ]
+  })
+  <div class="w-screen md:w-full px-4 2xl:px-[15%] my-4">
+    @include('admin::pages/users/partials/filters')
+
+    @jrmc.table({ pinCols: true })
+      @slot('header')
+        <tr>
+          <th class="w-12"></th>
+          <th>{{ t('models.user.fullname') }}</th>
+          <th>{{ t('models.user.email') }}</th>
+          <th>{{ t('models.user.status') }}</th>
+          <th>{{ t('models.user.createdAt') }}</th>
+          <th>{{ t('admin.table.actions') }}</th>
+        </tr>
+      @end
+      @slot('footer')
+        <tr>
+          <th colspan="6">{{{ t('filters.results', { itemsCount: users.total }) }}}</th>
+        </tr>
+      @end
+      @slot('body')
+        @each(user in users)~
+        <tr class="bg-base-200 divide-y dark:divide-white/10" data-test="user-{{ user.id }}">
+          <th>
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                @if (user.avatar)
+                  <img src="{{ user.avatar.variants?.thumbnail?.url }}" loading="lazy" alt="" />
+                @end
+              </div>
+            </div>
+          </th>
+          <td>
+            <div>
+              <div class="font-bold">{{ user.fullname }}</div>
+              <div class="text-sm opacity-50">{{ user.role }}</div>
+            </div>
+          </td>
+          <td>{{ user.email }}</td>
+          <td>
+            @if(user.disabled)
+              @!jrmc.badge({ text: t('models.user/status.disabled'), class: 'badge-warning' })
+            @else
+              @!jrmc.badge({ text: t('models.user/status.enabled'), class: 'badge-success' })
+            @end
+          </td>
+          <td>{{ t('app.date', { value: user.createdAt }) }}</td>
+          <td>
+            @jrmc.button.link({ href: route('admin.users.edit', user), class: 'btn btn-neutral normal-case', 'up-layer':'new', 'up-mode':'drawer', 'up-on-dismissed': 'up.reload(\'table\')' })
+              {{ t('admin.action.edit') }}
+            @end
+          </td>
+        </tr>
+        @end~
+      @end
+    @end
+
+    @!admin.pagination({ object: users })
+  </div>
+  @!admin.button.create({ href: route('admin.users.create'), mode: 'drawer' })
+@end

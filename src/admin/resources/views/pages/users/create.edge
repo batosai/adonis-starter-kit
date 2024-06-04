@@ -1,0 +1,12 @@
+@admin.layout()
+  @admin.section()
+    @admin.section.content({ title: t('admin.user.title.create'), description: t('admin.user.description.create'), href: route('admin.users.index') })
+      @jrmc.form({ id: 'create_user', class: 'md:col-span-2', action: route('admin.users.store'), enctype: 'multipart/form-data', error: false })
+        @include('admin::pages/users/partials/form')
+        @admin.section.action()
+          @!jrmc.button.input({ text: t('form.submit'), type: 'submit', form: 'create_user', class: 'btn-primary' })
+        @end
+      @end
+    @end
+  @end
+@end

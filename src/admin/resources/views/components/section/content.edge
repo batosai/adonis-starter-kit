@@ -1,0 +1,19 @@
+<div class="grid max-w-7xl grid-cols-1 {{ !up.isDrawer() ? 'md:grid-cols-3' : '' }} gap-x-8 gap-y-10 px-4 py-4 md:py-16">
+  @if($props.title || $props.description)
+    <div>
+      <h2 class="text-base font-semibold leading-7 text-white">
+        @if(href)
+          @!admin.button.back({ href })
+        @end
+        {{ $props.title ? $props.title : '' }}
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-gray-400">{{ $props.description ? $props.description : '' }}</p>
+
+      @if($slots.side)~
+        {{{ await $slots.side() }}}
+      @end~
+    </div>
+  @end
+
+  {{{ await $slots.main() }}}
+</div>

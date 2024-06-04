@@ -1,0 +1,9 @@
+@jrmc.button.link({
+  href: $props.href,
+  class: 'btn-circle btn-primary fixed bottom-20 lg:bottom-10 right-10 mb-safe',
+  'up-layer': $props.mode ? 'new' : 'origin current',
+  'up-mode': $props.mode ? $props.mode : '',
+  'up-on-dismissed': $props['up-on-dismissed'] ? $props['up-on-dismissed'] : 'up.reload(\'table\')'
+})
+  @svg('tabler:plus')
+@end

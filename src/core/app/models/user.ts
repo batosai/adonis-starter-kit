@@ -90,7 +90,7 @@ export default class User extends compose(BaseModel, Filterable, AuthFinder) {
   }
 
   @beforeSave()
-  public static async disabledDate(user: User) {
+  static async disabledDate(user: User) {
     if (user.$dirty.disabled) {
       if (user.disabled === true) {
         user.disabledOn = DateTime.local()

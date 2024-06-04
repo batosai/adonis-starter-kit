@@ -1,0 +1,19 @@
+user:
+  firstname: Firstname
+  lastname: Lastname
+  fullname: Name
+  lastname/hint: 2 characters minimum
+  firstname/hint: 2 characters minimum
+  email: Email
+  status: Status
+  role: role
+  avatar: Avatar
+  password: Password
+  password_confirmation: Password confirmation
+  createdAt: Date
+user/status:
+  enabled: Enabled
+  disabled: Disabled
+role/name:
+  admin: Admin
+  user: User

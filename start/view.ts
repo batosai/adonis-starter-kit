@@ -1,5 +1,7 @@
 import app from '@adonisjs/core/services/app'
 import edge from 'edge.js'
+import { edgeIconify, addCollection } from 'edge-iconify'
+import { icons as tablerIcons } from '@iconify-json/tabler'
 import env from '#start/env'
 
 const BASE_URL = new URL('../src/core/resources/', import.meta.url)
@@ -11,3 +13,7 @@ edge.global('app', {
   inProduction: app.inProduction,
 })
 edge.global('env', env)
+
+addCollection(tablerIcons)
+
+edge.use(edgeIconify)

@@ -6,7 +6,7 @@ import User from '#core/models/user'
 
 export default class ForgotPasswordController {
   async create({ view }: HttpContext) {
-    return view.render('auth::pages/auth/forgot-password')
+    return view.render('auth::pages/forgot-password')
   }
 
   async store({ request, response, session, i18n }: HttpContext) {

@@ -18,7 +18,6 @@ export const ResetPasswordValidator = vine.compile(
       .exists(async (db, value) => await db.from('users').where('email', value).first()),
     password: vine
       .string()
-      .trim()
       .confirmed()
       .minLength(PASSWORD_MIN_LENGTH)
       .maxLength(PASSWORD_MAX_LENGTH)

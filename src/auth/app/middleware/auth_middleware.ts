@@ -20,6 +20,14 @@ export default class AuthMiddleware {
     } = {}
   ) {
     await ctx.auth.authenticateUsing(options.guards, { loginRoute: this.redirectTo })
+
+    // Force deconnexion if disabled account
+    if (ctx.auth.user?.disabled) {
+      for (let guard of options.guards || [ctx.auth.defaultGuard]) {
+        await ctx.auth.use(guard).logout()
+      }
+    }
+
     return next()
   }
 }

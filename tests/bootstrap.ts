@@ -1,16 +1,19 @@
-import { authApiClient } from '@adonisjs/auth/plugins/api_client'
+import { pluginAdonisJS } from '@japa/plugin-adonisjs'
+import { apiClient } from '@japa/api-client'
+import { assert } from '@japa/assert'
+import { browserClient } from '@japa/browser-client'
 import app from '@adonisjs/core/services/app'
 import testUtils from '@adonisjs/core/services/test_utils'
 import { sessionApiClient } from '@adonisjs/session/plugins/api_client'
 import { shieldApiClient } from '@adonisjs/shield/plugins/api_client'
-import { apiClient } from '@japa/api-client'
-import { assert } from '@japa/assert'
-import { browserClient } from '@japa/browser-client'
-import { pluginAdonisJS } from '@japa/plugin-adonisjs'
+import { authApiClient } from '@adonisjs/auth/plugins/api_client'
+import { authBrowserClient } from '@adonisjs/auth/plugins/browser_client'
+import { sessionBrowserClient } from '@adonisjs/session/plugins/browser_client'
 import type { Config } from '@japa/runner/types'
-import { firefox } from 'playwright'
+import { firefox, chromium } from 'playwright'
 import env from '#start/env'
 import i18n from '#tests/plugins/i18n'
+import sleep from '#tests/plugins/sleep'
 
 /**
  * This file is imported by the "bin/test.ts" entrypoint file
@@ -22,22 +25,26 @@ import i18n from '#tests/plugins/i18n'
  */
 export const plugins: Config['plugins'] = [
   assert(),
-  apiClient(),
   pluginAdonisJS(app),
+  apiClient(),
   sessionApiClient(app),
   authApiClient(app),
   shieldApiClient(),
   browserClient({
     runInSuites: ['browser'],
     async launcher(options) {
-      return firefox.launch({
+      return chromium.launch({
         ...options,
         headless: env.get('TEST_HEADLESS'),
         slowMo: 300,
+        // devtools: true
       })
     },
   }),
+  sessionBrowserClient(app),
+  authBrowserClient(app),
   i18n(),
+  // sleep(),
 ]
 
 /**

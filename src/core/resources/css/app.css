@@ -1,3 +1,69 @@
+@import './unpoly.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* remove bounce effet */
+html,
+body,
+up-drawer * {
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  @apply bg-primary;
+  color: hsl(var(--pc));
+}
+
+/* override for safe-area-inset */
+
+.btm-nav-sm {
+  height: calc(3rem + env(safe-area-inset-bottom));
+}
+
+[data-actions='form-drawer'].sticky {
+  padding-bottom: env(safe-area-inset-bottom);
+  @apply bg-base-300;
+}
+
+.breadcrumbs {
+  padding-top: calc(0.5rem + env(safe-area-inset-top));
+}
+
+/* override form */
+
+.input {
+  @apply input-bordered;
+  @apply bg-base-200;
+}
+
+.file-input {
+  @apply file-input-bordered;
+  @apply bg-base-200;
+}
+
+.textarea {
+  @apply textarea-bordered;
+  @apply bg-base-200;
+}
+
+.select {
+  @apply select-bordered;
+  @apply bg-base-200;
+}
+
+/* override daisyUI */
+
+thead tr,
+tfoot tr {
+  @apply bg-base-300;
+}
+
+.table :where(.table-pin-cols tr th) {
+  background-color: inherit;
+}
+
+tbody tr {
+  @apply bg-base-200;
+}

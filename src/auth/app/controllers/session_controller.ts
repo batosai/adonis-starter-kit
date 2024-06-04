@@ -4,7 +4,7 @@ import User from '#core/models/user'
 
 export default class SessionController {
   async create({ view }: HttpContext) {
-    return view.render('auth::pages/auth/login')
+    return view.render('auth::pages/login')
   }
 
   async store({ request, auth, session, i18n, response }: HttpContext) {
@@ -17,7 +17,7 @@ export default class SessionController {
     if (user?.disabled) {
       session.flash('notification', {
         type: 'error',
-        message: i18n.formatMessage('auth.E_INVALID_DISABLED'),
+        message: i18n.formatMessage('errors.E_INVALID_DISABLED'),
       })
       session.clear()
       return response.redirect('/auth/login')

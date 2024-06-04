@@ -1,0 +1,7 @@
+E_INVALID_AUTH_SESSION: Your session has expired
+E_INVALID_API_TOKEN: Invalid or expired API token
+E_INVALID_BASIC_CREDENTIALS: Invalid credentials
+E_INVALID_AUTH_UID: Invalid credentials
+E_INVALID_AUTH_PASSWORD: Invalid credentials
+E_INVALID_DISABLED: Your account is disabled
+E_UNAUTHORIZED_ACCESS: Unauthorized access

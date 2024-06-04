@@ -1,0 +1,44 @@
+/* override unpoly */
+
+@import url('unpoly/unpoly.css');
+
+up-modal-box,
+up-drawer-box,
+up-cover-box,
+up-popup {
+  @apply bg-base-100;
+  overflow-x: initial;
+}
+
+/* drawer */
+
+up-drawer-box {
+  padding: 0;
+}
+
+up-drawer-dismiss {
+  display: none;
+}
+
+up-drawer[size='grow'] up-drawer-box {
+  width: 1024px;
+}
+
+/* modal */
+
+up-modal[nesting='0'] up-modal-viewport {
+  @apply p-0;
+  @apply sm:items-center;
+}
+
+up-modal-dismiss {
+  top: calc(0px + env(safe-area-inset-top));
+  @apply text-5xl;
+  @apply z-10;
+}
+
+up-modal-box {
+  @apply h-screen;
+  @apply sm:h-auto;
+  padding-top: calc(20px + env(safe-area-inset-top));
+}

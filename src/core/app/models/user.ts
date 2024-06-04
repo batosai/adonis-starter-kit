@@ -2,17 +2,21 @@ import crypto from 'node:crypto'
 import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
 import { compose } from '@adonisjs/core/helpers'
-import { BaseModel, computed, column, beforeCreate } from '@adonisjs/lucid/orm'
+import { BaseModel, computed, column, beforeCreate, scope, beforeSave } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbRememberMeTokensProvider } from '@adonisjs/auth/session'
+import { Filterable } from 'adonis-lucid-filter'
+import Roles from '#core/enums/roles'
+import UserFilter from '#core/models/filters/user_filter'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
   passwordColumnName: 'password',
 })
 
-export default class User extends compose(BaseModel, AuthFinder) {
+export default class User extends compose(BaseModel, Filterable, AuthFinder) {
   static selfAssignPrimaryKey = true
+  static $filter = () => UserFilter
   static rememberMeTokens = DbRememberMeTokensProvider.forModel(User)
 
   @column({ isPrimary: true })
@@ -48,6 +52,24 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 
+  // scopes
+
+  static admin = scope((query: any) => {
+    query.where('role', Roles.ADMIN)
+  })
+
+  // Computed
+
+  @computed()
+  get isAdmin() {
+    return this.role === Roles.ADMIN
+  }
+
+  @computed()
+  get isUser() {
+    return this.role === Roles.USER
+  }
+
   @computed()
   get fullname() {
     return `${this.firstname} ${this.lastname}`
@@ -58,5 +80,23 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @beforeCreate()
   static assignUuid(user: User) {
     user.id = crypto.randomUUID()
+  }
+
+  @beforeCreate()
+  static defaultPassword(user: User) {
+    if (!user.password) {
+      user.password = crypto.randomUUID()
+    }
+  }
+
+  @beforeSave()
+  public static async disabledDate(user: User) {
+    if (user.$dirty.disabled) {
+      if (user.disabled === true) {
+        user.disabledOn = DateTime.local()
+      } else {
+        user.disabledOn = null
+      }
+    }
   }
 }

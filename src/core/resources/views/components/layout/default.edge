@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html{{ $props.toAttrs() }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+
+    @if($slots.head !== undefined)~
+      {{{ await $slots.head() }}}
+    @else~
+      <title>AdonisJS - A fully featured web framework for Node.js</title>
+      <meta name="description" content="" />
+    @end~
+    {{ csrfMeta() }}
+
+    @if(app.inDev)~
+      <meta name="mode" content="{{ env.get('NODE_ENV') }}">
+    @end~
+
+    @vite(['src/core/resources/css/app.css', 'src/core/resources/js/app.js'])
+  </head>
+
+  {{{ await $slots.main() }}}
+</html>

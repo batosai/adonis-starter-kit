@@ -14,6 +14,8 @@ export default defineConfig({
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
     () => import('@adonisjs/mail/commands'),
+    () => import('@adonisjs/bouncer/commands'),
+    () => import('adonis-lucid-filter/commands')
   ],
 
   /*
@@ -42,7 +44,10 @@ export default defineConfig({
     () => import('@adonisjs/auth/auth_provider'),
     () => import('@adonisjs/mail/mail_provider'),
     () => import('@adonisjs/i18n/i18n_provider'),
+    () => import('@adonisjs/bouncer/bouncer_provider'),
+    () => import('./src/core/providers/unpoly_provider.js'),
     () => import('@jrmc/edge-components/edge_components_provider'),
+    () => import('adonis-lucid-filter/provider')
   ],
 
   /*
@@ -59,10 +64,17 @@ export default defineConfig({
     () => import('#start/events'),
     () => import('#start/view'),
 
+    // core
+    () => import('./src/core/start/view.js'),
+
     // auth
     () => import('./src/auth/start/routes.js'),
     () => import('./src/auth/start/view.js'),
     () => import('./src/auth/start/validator.js'),
+
+    // admin
+    () => import('./src/admin/start/routes.js'),
+    () => import('./src/admin/start/view.js'),
   ],
 
   /*
@@ -77,17 +89,17 @@ export default defineConfig({
   tests: {
     suites: [
       {
-        files: ['tests/unit/**/*.spec(.ts|.js)', 'src/**/tests/unit/**/*.spec(.ts|.js)'],
-        name: 'unit',
-        timeout: 2000,
-      },
-      {
         files: [
           'tests/functional/**/*.spec(.ts|.js)',
           'src/**/tests/functional/**/*.spec(.ts|.js)',
         ],
         name: 'functional',
         timeout: 30000,
+      },
+      {
+        files: ['tests/unit/**/*.spec(.ts|.js)', 'src/**/tests/unit/**/*.spec(.ts|.js)'],
+        name: 'unit',
+        timeout: 2000,
       },
       {
         files: ['tests/browser/**/*.spec(.ts|.js)', 'src/**/tests/browser/**/*.spec(.ts|.js)'],

@@ -15,7 +15,7 @@ export default defineConfig({
     () => import('@adonisjs/lucid/commands'),
     () => import('@adonisjs/mail/commands'),
     () => import('@adonisjs/bouncer/commands'),
-    () => import('adonis-lucid-filter/commands')
+    () => import('adonis-lucid-filter/commands'),
   ],
 
   /*
@@ -47,7 +47,7 @@ export default defineConfig({
     () => import('@adonisjs/bouncer/bouncer_provider'),
     () => import('./src/core/providers/unpoly_provider.js'),
     () => import('@jrmc/edge-components/edge_components_provider'),
-    () => import('adonis-lucid-filter/provider')
+    () => import('adonis-lucid-filter/provider'),
   ],
 
   /*

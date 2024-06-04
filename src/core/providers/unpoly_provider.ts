@@ -1,5 +1,5 @@
-import type { ApplicationService } from '@adonisjs/core/types'
 import { HttpContext } from '@adonisjs/core/http'
+import type { ApplicationService } from '@adonisjs/core/types'
 import Up from './unpoly/up.js'
 
 declare module '@adonisjs/core/http' {

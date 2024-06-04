@@ -1,12 +1,17 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
+import { faker } from '@faker-js/faker'
+import { test } from '@japa/runner'
+import {
+  MAX_LENGTH,
+  MAX_SIZE,
+  MIN_LENGTH,
+  PASSWORD_MIN_LENGTH,
+} from '#admin/validators/user_validator'
+import Roles from '#core/enums/roles'
+import User from '#core/models/user'
 // import Drive from '@ioc:Adonis/Core/Drive'
 // import { file } from '@ioc:Adonis/Core/Helpers'
 import { UserFactory } from '#database/factories/user_factory'
-import Roles from '#core/enums/roles'
-import { faker } from '@faker-js/faker'
-import { MIN_LENGTH, MAX_LENGTH, MAX_SIZE, PASSWORD_MIN_LENGTH } from '#admin/validators/user_validator'
-import User from '#core/models/user'
 
 test.group('User validator', (group) => {
   group.each.setup(() => testUtils.db().withGlobalTransaction())

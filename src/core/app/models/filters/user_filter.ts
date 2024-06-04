@@ -1,5 +1,5 @@
-import { BaseModelFilter } from 'adonis-lucid-filter'
 import type { ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
+import { BaseModelFilter } from 'adonis-lucid-filter'
 import User from '#core/models/user'
 
 export default class UserFilter extends BaseModelFilter {

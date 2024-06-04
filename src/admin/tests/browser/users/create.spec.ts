@@ -1,10 +1,15 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-import { UserFactory } from '#database/factories/user_factory'
-import Roles from '#core/enums/roles'
 import { faker } from '@faker-js/faker'
+import { test } from '@japa/runner'
+import {
+  MAX_LENGTH,
+  MAX_SIZE,
+  MIN_LENGTH,
+  PASSWORD_MIN_LENGTH,
+} from '#admin/validators/user_validator'
+import Roles from '#core/enums/roles'
 import User from '#core/models/user'
-import { MIN_LENGTH, MAX_LENGTH, MAX_SIZE, PASSWORD_MIN_LENGTH } from '#admin/validators/user_validator'
+import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Admin create user', (group) => {
   let user: User | null = null
@@ -29,21 +34,15 @@ test.group('Admin create user', (group) => {
     await page.locator('text=validate').click()
 
     await page.assertElementsCount(
-      await page.getByText(
-        `The lastname field must have at least ${MIN_LENGTH} characters`
-      ),
+      await page.getByText(`The lastname field must have at least ${MIN_LENGTH} characters`),
       1
     )
     await page.assertElementsCount(
-      await page.getByText(
-        `The firstname field must have at least ${MIN_LENGTH} characters`
-      ),
+      await page.getByText(`The firstname field must have at least ${MIN_LENGTH} characters`),
       1
     )
     await page.assertElementsCount(
-      await page.getByText(
-        'The email field must be a valid email address'
-      ),
+      await page.getByText('The email field must be a valid email address'),
       1
     )
 
@@ -55,23 +54,14 @@ test.group('Admin create user', (group) => {
     // await page.pause()
 
     await page.assertElementsCount(
-      await page.getByText(
-        `The lastname field must not be greater than ${MAX_LENGTH} characters`
-      ),
+      await page.getByText(`The lastname field must not be greater than ${MAX_LENGTH} characters`),
       1
     )
     await page.assertElementsCount(
-      await page.getByText(
-        `The firstname field must not be greater than ${MAX_LENGTH} characters`
-      ),
+      await page.getByText(`The firstname field must not be greater than ${MAX_LENGTH} characters`),
       1
     )
-    await page.assertElementsCount(
-      await page.getByText(
-        'The email has already been taken'
-      ),
-      1
-    )
+    await page.assertElementsCount(await page.getByText('The email has already been taken'), 1)
   })
 
   test('should create success', async ({ browserContext, visit, route, i18n }) => {
@@ -91,9 +81,7 @@ test.group('Admin create user', (group) => {
 
     await page.assertElementsCount('tbody tr', 2)
     await page.assertElementsCount(
-      await page.getByText(
-        i18n.formatMessage('form.success.user.create')
-      ),
+      await page.getByText(i18n.formatMessage('form.success.user.create')),
       1
     )
   })

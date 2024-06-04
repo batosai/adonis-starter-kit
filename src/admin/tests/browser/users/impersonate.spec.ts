@@ -1,8 +1,8 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-import { UserFactory } from '#database/factories/user_factory'
+import { test } from '@japa/runner'
 import Roles from '#core/enums/roles'
 import User from '#core/models/user'
+import { UserFactory } from '#database/factories/user_factory'
 
 // test.group('Admin impersonate user', (group) => {
 //   let user: User | null = null

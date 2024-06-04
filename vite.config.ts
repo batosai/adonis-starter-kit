@@ -13,7 +13,11 @@ export default defineConfig({
       /**
        * Paths to watch and reload the browser on file change
        */
-      reload: ['src/**/resources/views/**/*.edge', 'src/**/resources/css/**/*.css', 'src/**/resources/js/**/*.js'],
+      reload: [
+        'src/**/resources/views/**/*.edge',
+        'src/**/resources/css/**/*.css',
+        'src/**/resources/js/**/*.js',
+      ],
     }),
   ],
 })

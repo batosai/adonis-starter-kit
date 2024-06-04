@@ -1,8 +1,8 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-import { UserFactory } from '#database/factories/user_factory'
+import { test } from '@japa/runner'
 import Roles from '#core/enums/roles'
 import User from '#core/models/user'
+import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Admin users', (group) => {
   let user: User | null = null
@@ -27,13 +27,19 @@ test.group('Admin users', (group) => {
     await page.assertElementsCount('tbody tr', 10)
 
     await page.goto(
-      route('admin.users.index', {}, {
-        qs: {
-          page: 2,
-        },
-      }), {
-        waitUntil : 'load'
-    })
+      route(
+        'admin.users.index',
+        {},
+        {
+          qs: {
+            page: 2,
+          },
+        }
+      ),
+      {
+        waitUntil: 'load',
+      }
+    )
 
     await page.assertElementsCount('tbody tr', 3)
   })

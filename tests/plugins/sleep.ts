@@ -6,8 +6,6 @@ declare module '@japa/runner/core' {
   }
 }
 
-
-
 export default function i18n() {
   return function () {
     TestContext.macro('sleep', function (milliseconds: number) {

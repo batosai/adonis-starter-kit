@@ -1,9 +1,9 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
 import mail from '@adonisjs/mail/services/main'
-import { UserFactory } from '#database/factories/user_factory'
+import { test } from '@japa/runner'
 import ForgotPasswordNotification from '#auth/mails/forgot_password_notification'
 import Roles from '#core/enums/roles'
+import { UserFactory } from '#database/factories/user_factory'
 
 test.group(' Admin Forgot password mailer', (group) => {
   group.each.setup(() => testUtils.db().withGlobalTransaction())

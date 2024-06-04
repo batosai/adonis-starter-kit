@@ -8,37 +8,24 @@ export const MAX_SIZE = '10mb'
 export const PASSWORD_MIN_LENGTH = 8
 export const PASSWORD_MAX_LENGTH = 255
 
-export const UserValidator = vine.withMetaData<{ currentUser?: User, record?: User }>().compile(
+export const UserValidator = vine.withMetaData<{ currentUser?: User; record?: User }>().compile(
   vine.object({
-    lastname: vine.string()
-      .trim()
-      .toCamelCase()
-      .minLength(MIN_LENGTH)
-      .maxLength(MAX_LENGTH)
-    ,
-    firstname: vine.string()
-      .trim()
-      .toCamelCase()
-      .minLength(MIN_LENGTH)
-      .maxLength(MAX_LENGTH)
-    ,
+    lastname: vine.string().trim().toCamelCase().minLength(MIN_LENGTH).maxLength(MAX_LENGTH),
+    firstname: vine.string().trim().toCamelCase().minLength(MIN_LENGTH).maxLength(MAX_LENGTH),
     email: vine
       .string()
       .trim()
       .toLowerCase()
       .email()
       .unique(async (db, value, field) => {
-        const query = db
-          .from('users')
-          .where('email', value)
+        const query = db.from('users').where('email', value)
 
         if (field.meta.record) {
           query.whereNot('id', field.meta.record.id)
         }
 
         return !(await query.first())
-      })
-    ,
+      }),
     password: vine
       .string()
       .minLength(PASSWORD_MIN_LENGTH)
@@ -48,8 +35,7 @@ export const UserValidator = vine.withMetaData<{ currentUser?: User, record?: Us
       .oneUpperCaseAtLeast()
       .oneSpecialCharacterAtLeast()
       .confirmed()
-      .optional()
-    ,
+      .optional(),
     role: vine
       .enum((field) => {
         if (field.meta.currentUser.isAdmin && field.meta.currentUser.id !== field.meta.record?.id) {
@@ -58,8 +44,6 @@ export const UserValidator = vine.withMetaData<{ currentUser?: User, record?: Us
 
         return [Roles.USER] as const
       })
-      .optional()
+      .optional(),
   })
 )
-
-

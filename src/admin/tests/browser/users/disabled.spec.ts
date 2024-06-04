@@ -1,8 +1,8 @@
-import { test } from '@japa/runner'
 import testUtils from '@adonisjs/core/services/test_utils'
-import { UserFactory } from '#database/factories/user_factory'
+import { test } from '@japa/runner'
 import Roles from '#core/enums/roles'
 import User from '#core/models/user'
+import { UserFactory } from '#database/factories/user_factory'
 
 test.group('Admin disabled user', (group) => {
   let user: User | null = null
@@ -25,9 +25,7 @@ test.group('Admin disabled user', (group) => {
     await page.locator('.modal').getByRole('button', { name: 'ok' }).click()
 
     await page.assertElementsCount(
-      await page.getByText(
-        i18n.formatMessage('form.success.user.toggle.disabled')
-      ),
+      await page.getByText(i18n.formatMessage('form.success.user.toggle.disabled')),
       1
     )
 
@@ -35,9 +33,7 @@ test.group('Admin disabled user', (group) => {
     await page.locator('.modal').getByRole('button', { name: 'ok' }).click()
 
     await page.assertElementsCount(
-      await page.getByText(
-        i18n.formatMessage('form.success.user.toggle.enabled')
-      ),
+      await page.getByText(i18n.formatMessage('form.success.user.toggle.enabled')),
       1
     )
   })

@@ -3,12 +3,14 @@ import { DateTime } from 'luxon'
 import User from '#core/models/user'
 
 export default class SessionController {
-  async create({ view }: HttpContext) {
-    return view.render('auth::pages/login')
+  async create({ request, view }: HttpContext) {
+    return view.render('auth::pages/login', {
+      redirectTo: request.input('redirect_to', '/admin'),
+    })
   }
 
   async store({ request, auth, session, i18n, response }: HttpContext) {
-    const { email, password } = request.only(['email', 'password'])
+    const { email, password, redirectTo } = request.only(['email', 'password', 'redirectTo'])
 
     const user = await User.verifyCredentials(email, password)
 
@@ -31,7 +33,12 @@ export default class SessionController {
       message: i18n.formatMessage('form.success.session'),
     })
 
-    response.redirect('/')
+    if (redirectTo) {
+      response.redirect().toPath(redirectTo)
+    }
+    else {
+      response.redirect('/')
+    }
   }
 
   async destroy({ auth, response }: HttpContext) {

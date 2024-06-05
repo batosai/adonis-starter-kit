@@ -20,8 +20,8 @@ up.layer.config.drawer.position = 'right'
 
 // override unpoly up-confirm, add custom modal
 window.upConfirmCompiler = () => {
-  up.compiler('[up-confirm]', function (element) {
-    up.on(element, 'click', (event, element) => {
+  up.compiler('[up-confirm]', function (el) {
+    up.on(el, 'click', (event, element) => {
       event.preventDefault()
       up.confirm(element)
     })

@@ -18,6 +18,24 @@ up.feedback.config.navSelectors.push(['nav'])
 up.layer.config.drawer.size = 'large'
 up.layer.config.drawer.position = 'right'
 
+// force redirect
+// https://unpoly.com/up:fragment:loaded
+up.on('up:fragment:loaded', (event) => {
+  const location = event.response.header('X-Up-Location')
+  const fullReload = event.response.header('X-Full-Reload')
+
+  if (location) {
+    event.preventDefault()
+    window.location.href = location
+    // up.navigate(location, { fail: true })
+  }
+
+  if (fullReload) {
+    event.preventDefault()
+    event.request.loadPage()
+  }
+})
+
 // override unpoly up-confirm, add custom modal
 window.upConfirmCompiler = () => {
   up.compiler('[up-confirm]', function (el) {
@@ -30,7 +48,10 @@ window.upConfirmCompiler = () => {
 upConfirmCompiler()
 
 up.confirm = function (element) {
+  const href = element.getAttribute('href')
   const message = element.getAttribute('up-confirm')
+  const layer = element.getAttribute('up-layer') ?? 'current'
+  const target = element.getAttribute('up-target') ?? 'main'
   const method = element.getAttribute('up-method') ?? 'GET'
   const colorButton = element.dataset.colorButton ?? 'btn-primary'
 
@@ -44,9 +65,7 @@ up.confirm = function (element) {
                   cancel
               </button>
 
-              <button class="btn ${colorButton}" @click="up.navigate({ target: 'main', url: '${element.getAttribute(
-                'href'
-              )}', method: '${method}' }); $root.remove()">
+              <button class="btn ${colorButton}" @click="up.navigate({ layer: '${layer}', target: '${target}', url: '${href}', method: '${method}' }); $root.remove()">
                   ok
               </button>
           </div>

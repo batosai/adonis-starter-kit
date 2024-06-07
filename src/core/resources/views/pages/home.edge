@@ -9,13 +9,24 @@
 </head>
 <body>
 
-  <div class="flex justify-center">
+  <div class="grid justify-center grid-rows-1 gap-4">
 
     @eval(await auth.check())
 
     @if(auth.isAuthenticated)
-      @jrmc.form({action: route('auth.session.destroy')})
-        @!jrmc.button({ text: 'Logout' })
+
+      <div>
+        {{ auth.user.fullname }}
+      </div>
+
+      @if(session.has('originalUserId'))
+        @jrmc.form({ action: route('impersonate.destroy', { qs: { _method: 'DELETE' }}) })
+          @!jrmc.button({ text: 'Stop impersonate' })
+        @end
+      @else
+        @jrmc.form({action: route('auth.session.destroy')})
+          @!jrmc.button({ text: 'Logout' })
+        @end
       @end
     @else
       <a href="{{ route('auth.session.create') }}" class="btn">Login</a>

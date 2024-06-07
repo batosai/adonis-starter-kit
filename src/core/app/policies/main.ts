@@ -14,4 +14,5 @@
 
 export const policies = {
   UserPolicy: () => import('#core/policies/user_policy'),
+  ImpersonatePolicy: () => import('#auth/policies/impersonate_policy'),
 }

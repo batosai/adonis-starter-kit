@@ -40,6 +40,14 @@
       @end
     @end
 
+    @can('ImpersonatePolicy.create', user)
+      @admin.section.content({ title: t('admin.user.title.impersonate'), description: t('admin.user.description.impersonate') })
+        @admin.section.action()
+          @!jrmc.button.link({ text: t('admin.user.button.impersonate'), href: route('impersonate.store', { id: user.id }), class: 'btn-secondary normal-case', 'data-color-button': 'btn-secondary', 'up-confirm': t('admin.action.confirm'), 'up-method': 'POST', 'up-layer': 'root', 'up-target': 'body' })
+        @end
+      @end
+    @end
+
     @can('UserPolicy.delete', user)
       @admin.section.content({ title: t('admin.user.title.delete'), description: t('admin.user.description.delete') })
         @admin.section.action()

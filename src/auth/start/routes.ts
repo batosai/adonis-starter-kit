@@ -12,6 +12,7 @@ import { middleware } from '#start/kernel'
 const SessionController = () => import('#auth/controllers/session_controller')
 const ForgotPasswordController = () => import('#auth/controllers/forgot_password_controller')
 const ResetPasswordController = () => import('#auth/controllers/reset_password_controller')
+const ImpersonatesController = () => import('#auth/controllers/impersonates_controller')
 
 router
   .group(() => {
@@ -33,4 +34,13 @@ router
 router
   .post('auth/logout', [SessionController, 'destroy'])
   .as('auth.session.destroy')
+  .use(middleware.auth())
+
+router
+  .post('impersonates/:id', [ImpersonatesController, 'store'])
+  .as('impersonate.store')
+  .use(middleware.auth())
+router
+  .post('impersonates', [ImpersonatesController, 'destroy'])
+  .as('impersonate.destroy')
   .use(middleware.auth())

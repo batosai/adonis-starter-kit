@@ -1,30 +1,42 @@
 @jrmc.card({ class: 'bg-base-100 shadow-xl mx-4 mt-4 z-20 sticky top-5 left-0' })
   @slot('top')
-  <ul class="flex flew-row items-center space-x-3 m-2 w-full">
-    <li class="avatar">
-      <div class="w-8 h-8">
-        <img src="/edge.jpeg" loading="lazy" alt="Edge" />
-      </div>
-      <div class="text-2xl mx-4">+</div>
-      <div class="w-8 h-8">
-        <img src="/daisyui.png" loading="lazy" alt="DaisyUI" />
-      </div>
-      <div class="text-2xl mx-4">=</div>
-    </li>
-    <li class="basis-1/2">
-      <div class="font-bold">
-        <a href="/" @click="open = false">Edge</a>
-      </div>
-      <div class="text-sm opacity-50">
-        <a href="/" @click="open = false">components</a>
-      </div>
-    </li>
-  </ul>
+    <ul class="flex items-center w-full m-2 space-x-3 flew-row">
+      <li class="avatar online">
+        <div class="w-12 h-12 mask mask-squircle">
+          @if (auth.user.avatar)
+            <img src="{{ auth.user.avatar.variants?.thumbnail?.url }}" loading="lazy" alt="" />
+          @end
+        </div>
+      </li>
+      <li class="basis-1/2">
+        <div class="font-bold">
+          <a href="{{ route('admin.users.edit', auth.user) }}" @click="open = false">{{ auth.user.firstname }}</a>
+        </div>
+        <div class="text-sm opacity-50">
+          <a href="{{ route('admin.users.edit', auth.user) }}" @click="open = false">{{ auth.user.lastname }}</a>
+        </div>
+      </li>
+      <li >
+        @if(session.has('originalUserId'))
+          @jrmc.form({ action: route('impersonate.destroy', { qs: { _method: 'DELETE' }}), error: false })
+            @jrmc.button({ class: 'w-full btn-ghost justify-center', type: 'submit' })
+              @!svg('tabler:logout', { width: 20, height: 20 })
+            @end
+          @end
+        @else
+          @jrmc.form({ action: route('auth.session.destroy'), error: false })
+            @jrmc.button({ class: 'w-full btn-ghost justify-center', type: 'submit' })
+              @!svg('tabler:logout', { width: 20, height: 20 })
+            @end
+          @end
+        @end
+      </li>
+    </ul>
   @end
 @end
 
 <nav class="overflow-y-scroll" style="max-height: calc(100% - 125px );">
-  <ul class="menu menu-compact text-base-content rounded-box p-4">
+  <ul class="p-4 menu menu-compact text-base-content rounded-box">
 
     <li>
       @!admin.sidebar.link({

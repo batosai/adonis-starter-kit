@@ -1,6 +1,6 @@
-import router from '@adonisjs/core/services/router'
 import type { Authenticators } from '@adonisjs/auth/types'
 import type { HttpContext } from '@adonisjs/core/http'
+import router from '@adonisjs/core/services/router'
 import type { NextFn } from '@adonisjs/core/types/http'
 
 /**
@@ -20,9 +20,9 @@ export default class AuthMiddleware {
       guards?: (keyof Authenticators)[]
     } = {}
   ) {
-
     if (ctx.request.url()) {
-      this.redirectTo = router.builder()
+      this.redirectTo = router
+        .builder()
         .qs({
           redirect_to: ctx.request.url(),
         })

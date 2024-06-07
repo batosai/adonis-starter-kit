@@ -13,8 +13,7 @@ export default class UsersController {
 
   constructor(private userFilter: UserSessionFilter) {}
 
-  async index(ctx: HttpContext) {
-    const { view, bouncer } = ctx
+  async index({ view, bouncer }: HttpContext) {
     await bouncer.with(UserPolicy).authorize('viewList')
 
     const limit = 10

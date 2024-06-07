@@ -26,10 +26,10 @@
       @end
       @slot('body')
         @each(user in users)~
-        <tr class="bg-base-200 divide-y dark:divide-white/10" data-test="user-{{ user.id }}">
+        <tr class="divide-y bg-base-200 dark:divide-white/10" data-test="user-{{ user.id }}">
           <th>
             <div class="avatar">
-              <div class="mask mask-squircle w-12 h-12">
+              <div class="w-12 h-12 mask mask-squircle">
                 @if (user.avatar)
                   <img src="{{ user.avatar.variants?.thumbnail?.url }}" loading="lazy" alt="" />
                 @end

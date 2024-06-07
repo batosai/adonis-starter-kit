@@ -35,8 +35,7 @@ export default class SessionController {
 
     if (redirectTo) {
       response.redirect().toPath(redirectTo)
-    }
-    else {
+    } else {
       response.redirect('/')
     }
   }

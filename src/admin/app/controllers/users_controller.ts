@@ -72,7 +72,7 @@ export default class UsersController {
     })
 
     if (up.isDrawer()) {
-      up.setDismissLayer().commit()
+      up.setDismissLayer()
     } else {
       response.redirect().toRoute('admin.users.index')
     }
@@ -127,7 +127,7 @@ export default class UsersController {
     })
 
     if (up.getMode() === 'drawer') {
-      up.setDismissLayer().commit()
+      up.setDismissLayer()
     } else {
       if (auth.user?.isAdmin) {
         response.redirect().toRoute('admin.users.index')
@@ -169,7 +169,7 @@ export default class UsersController {
     })
 
     if (up.getMode() === 'drawer') {
-      up.setDismissLayer().commit()
+      up.setDismissLayer()
     } else {
       response.redirect().toRoute('admin.users.index')
     }
@@ -219,7 +219,7 @@ export default class UsersController {
     }
 
     if (up.getMode() === 'drawer') {
-      up.setDismissLayer().commit()
+      up.setDismissLayer()
     } else {
       response.redirect().back()
     }
@@ -256,7 +256,7 @@ export default class UsersController {
     })
 
     if (up.getMode() === 'drawer') {
-      up.setDismissLayer().commit()
+      up.setDismissLayer()
     } else {
       response.redirect().back()
     }

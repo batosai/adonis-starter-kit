@@ -3,6 +3,9 @@ import type { NextFn } from '@adonisjs/core/types/http'
 
 export default class DefaultMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
+    /**
+     * Sharing up with templates
+     */
     if ('view' in ctx) {
       ctx.view.share({
         up: ctx.up,
@@ -10,9 +13,18 @@ export default class DefaultMiddleware {
     }
 
     /**
-     * Call next method in the pipeline and return its output
+     * Call next middlewares or route handler
      */
-    const output = await next()
-    return output
+    const response = await next()
+
+    /**
+     * Commit headers
+     */
+    await ctx.up.commit()
+
+    /**
+     * Return response
+     */
+    return response
   }
 }

@@ -45,9 +45,9 @@ export default defineConfig({
     () => import('@adonisjs/mail/mail_provider'),
     () => import('@adonisjs/i18n/i18n_provider'),
     () => import('@adonisjs/bouncer/bouncer_provider'),
-    () => import('./src/core/providers/unpoly_provider.js'),
     () => import('@jrmc/edge-components/edge_components_provider'),
-    () => import('adonis-lucid-filter/provider'),
+    () => import('@jrmc/adonis-unpoly/unpoly_provider'),
+    () => import('adonis-lucid-filter/provider')
   ],
 
   /*

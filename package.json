@@ -63,6 +63,7 @@
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^2.0.2",
     "@iconify-json/tabler": "^1.1.112",
+    "@jrmc/adonis-unpoly": "^1.0.1",
     "@jrmc/edge-components": "^2.0.0",
     "@vinejs/vine": "^2.0.0",
     "adonis-lucid-filter": "^5.1.0",

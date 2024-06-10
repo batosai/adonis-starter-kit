@@ -37,7 +37,7 @@ router.use([
   () => import('@adonisjs/auth/initialize_auth_middleware'),
   () => import('#core/middleware/detect_user_locale_middleware'),
   () => import('#core/middleware/initialize_bouncer_middleware'),
-  () => import('#core/middleware/unpoly_middleware'),
+  () => import('@jrmc/adonis-unpoly/unpoly_middleware')
 ])
 
 /**

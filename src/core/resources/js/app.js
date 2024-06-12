@@ -37,15 +37,12 @@ up.on('up:fragment:loaded', (event) => {
 })
 
 // override unpoly up-confirm, add custom modal
-window.upConfirmCompiler = () => {
-  up.compiler('[up-confirm]', function (el) {
-    up.on(el, 'click', (event, element) => {
-      event.preventDefault()
-      up.confirm(element)
-    })
+up.compiler('[up-confirm]', function (el) {
+  up.on(el, 'click', (event, element) => {
+    event.preventDefault()
+    up.confirm(element)
   })
-}
-upConfirmCompiler()
+})
 
 up.confirm = function (element) {
   const href = element.getAttribute('href')

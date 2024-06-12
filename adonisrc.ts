@@ -47,7 +47,8 @@ export default defineConfig({
     () => import('@adonisjs/bouncer/bouncer_provider'),
     () => import('@jrmc/edge-components/edge_components_provider'),
     () => import('@jrmc/adonis-unpoly/unpoly_provider'),
-    () => import('adonis-lucid-filter/provider')
+    () => import('adonis-lucid-filter/provider'),
+    () => import('@stouder-io/adonis-auditing/auditing_provider')
   ],
 
   /*
@@ -123,4 +124,7 @@ export default defineConfig({
       reloadServer: false,
     },
   ],
+  directories: {
+    audit_resolvers: 'src/core/app/audit_resolvers'
+  }
 })

@@ -65,6 +65,7 @@
     "@iconify-json/tabler": "^1.1.112",
     "@jrmc/adonis-unpoly": "^1.0.1",
     "@jrmc/edge-components": "^2.0.0",
+    "@stouder-io/adonis-auditing": "^1.1.7",
     "@vinejs/vine": "^2.0.0",
     "adonis-lucid-filter": "^5.1.0",
     "better-sqlite3": "^10.0.0",

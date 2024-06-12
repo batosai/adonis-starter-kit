@@ -8,13 +8,14 @@ import { DbRememberMeTokensProvider } from '@adonisjs/auth/session'
 import { Filterable } from 'adonis-lucid-filter'
 import Roles from '#core/enums/roles'
 import UserFilter from '#core/models/filters/user_filter'
+import { Auditable } from '@stouder-io/adonis-auditing'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
   passwordColumnName: 'password',
 })
 
-export default class User extends compose(BaseModel, Filterable, AuthFinder) {
+export default class User extends compose(BaseModel, Filterable, Auditable, AuthFinder) {
   static selfAssignPrimaryKey = true
   static $filter = () => UserFilter
   static rememberMeTokens = DbRememberMeTokensProvider.forModel(User)

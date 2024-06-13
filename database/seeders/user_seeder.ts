@@ -4,7 +4,7 @@ import User from '#core/models/user'
 
 export default class extends BaseSeeder {
   async run() {
-    await User.createMany([
+    await User.create(
       {
         role: Roles.ADMIN,
         lastname: 'Chaufourier',
@@ -12,6 +12,6 @@ export default class extends BaseSeeder {
         email: 'jeremy@chaufourier.fr',
         password: 'secret',
       },
-    ])
+    )
   }
 }

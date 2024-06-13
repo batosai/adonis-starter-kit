@@ -1,6 +1,8 @@
 sidebar:
   dashboard: Dashboard
   users: Users
+  audits: Journals
+  system: System
 table:
   actions: Actions
 action:
@@ -34,3 +36,11 @@ user:
     enable: Yes, Enabled
     disable: Yes, Disabled
     impersonate: Yes, impersonate
+
+audit:
+  createdAt: Create at
+  by: By
+  entity: Entity
+  id: id
+  newValues: Modify values
+  oldValues: Old values

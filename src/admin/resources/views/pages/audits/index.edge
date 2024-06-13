@@ -1,0 +1,52 @@
+@admin.layout()
+  @!admin.breadcrumb({
+    items: [
+      { label: t('admin.sidebar.dashboard'), link: route('admin.dashboard') },
+      { label: t('admin.sidebar.audits') }
+    ]
+  })
+
+  <div class="w-screen md:w-full px-4 2xl:px-[15%] my-4">
+    @jrmc.table()
+      @slot('header')
+        <tr>
+          <th class="!relative">{{ t('models.audit.type') }}</th>
+          <th>{{ t('models.audit.username') }}</th>
+          <th>{{ t('models.audit.action') }}</th>
+          <th>{{ t('models.audit.createdAt') }}</th>
+          <th>{{ t('admin.table.actions') }}</th>
+        </tr>
+      @end
+      @slot('footer')
+        <tr>
+          <th colspan="5">{{{ t('filters.results', { itemsCount: audits.total }) }}}</th>
+        </tr>
+      @end
+      @slot('body')
+        @each(audit in audits)~
+        <tr class="divide-y dark:divide-white/10">
+          <td>{{ audit.auditableType }}</td>
+          <td>{{ audit.metadata.user_fullname ? audit.metadata.user_fullname : '' }}</td>
+          <td class="capitalize">
+            @if(audit.event === 'create')
+              @!jrmc.badge({ text: audit.event, class: 'badge-success' })
+            @elseif(audit.event === 'update')
+              @!jrmc.badge({ text: audit.event, class: 'badge-success' })
+            @elseif(audit.event === 'delete')
+              @!jrmc.badge({ text: audit.event, class: 'badge-error' })
+            @end
+          </td>
+          <td>{{ t('app.date', { value: audit.createdAt }) }}</td>
+          <td>
+            @jrmc.button.link({ href: route('admin.audits.show', audit), class: 'btn btn-neutral normal-case', 'up-layer':'new', 'up-mode':'drawer' })
+              {{ t('admin.action.show') }}
+            @end
+          </td>
+        </tr>
+        @end~
+      @end
+    @end
+
+    @!admin.pagination({ object: audits })
+  </div>
+@end

@@ -17,3 +17,8 @@ user/status:
 role/name:
   admin: Admin
   user: User
+audit:
+  type: Type
+  username: By
+  action: Event
+  createdAt: Date

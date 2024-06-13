@@ -56,16 +56,6 @@ export default class UsersController {
     // }
     await user.save()
 
-    // Event.emit('audit:new', {
-    //   label: `Create user ${user!.fullname}`,
-    //   username: auth.user!.fullname,
-    //   userId: auth.user!.id,
-    //   action: 'CREATE',
-    //   target: 'USER',
-    //   targetId: user.id,
-    //   payload: user.serialize(),
-    // })
-
     session.flash('notification', {
       type: 'success',
       message: i18n.formatMessage('form.success.user.create'),
@@ -111,16 +101,6 @@ export default class UsersController {
     const original = user.$original
     await user.save()
 
-    // Event.emit('audit:new', {
-    //   label: `Update user ${original!.firstname} ${original!.lastname}`,
-    //   username: auth.user!.fullname,
-    //   userId: auth.user!.id,
-    //   action: 'UPDATE',
-    //   target: 'USER',
-    //   targetId: user.id,
-    //   payload: dirty,
-    // })
-
     session.flash('notification', {
       type: 'success',
       message: i18n.formatMessage('form.success.user.edit'),
@@ -153,16 +133,6 @@ export default class UsersController {
     const fullname = user!.fullname
     await user.delete()
 
-    // Event.emit('audit:new', {
-    //   label: `Delete user ${fullname}`,
-    //   username: auth.user!.fullname,
-    //   userId: auth.user!.id,
-    //   action: 'DELETE',
-    //   target: 'USER',
-    //   targetId: id,
-    //   payload,
-    // })
-
     session.flash('notification', {
       type: 'success',
       message: i18n.formatMessage('form.success.user.delete'),
@@ -191,27 +161,11 @@ export default class UsersController {
     await user.save()
 
     if (user.disabled) {
-      // Event.emit('audit:new', {
-      //   label: `Disabled user ${user!.fullname}`,
-      //   username: auth.user!.fullname,
-      //   userId: auth.user!.id,
-      //   action: 'UPDATE',
-      //   target: 'USER',
-      //   targetId: user.id,
-      // })
       session.flash('notification', {
         type: 'success',
         message: i18n.formatMessage('form.success.user.toggle.disabled'),
       })
     } else {
-      // Event.emit('audit:new', {
-      //   label: `Enabled user ${user!.fullname}`,
-      //   username: auth.user!.fullname,
-      //   userId: auth.user!.id,
-      //   action: 'UPDATE',
-      //   target: 'USER',
-      //   targetId: user.id,
-      // })
       session.flash('notification', {
         type: 'success',
         message: i18n.formatMessage('form.success.user.toggle.enabled'),
@@ -240,15 +194,6 @@ export default class UsersController {
     if (user) {
       await mail.sendLater(new ForgotPasswordNotification(user))
     }
-
-    // Event.emit('audit:new', {
-    //   label: `Forgot password user ${user!.fullname}`,
-    //   username: auth.user!.fullname,
-    //   userId: auth.user!.id,
-    //   action: 'UPDATE',
-    //   target: 'USER',
-    //   targetId: user.id,
-    // })
 
     session.flash('notification', {
       type: 'success',

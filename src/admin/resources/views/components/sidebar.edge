@@ -46,17 +46,29 @@
         icon: 'tabler:dashboard',
       })
     </li>
+
+    <li>
+      <li>
+        @!admin.sidebar.link({
+          class: request.matchesRoute(['admin.user.index', 'admin.user.create', 'admin.user.edit']) ? 'active' : null,
+          text: t('admin.sidebar.users'),
+          href: route('admin.users.index'),
+          icon: 'tabler:users',
+        })
+      </li>
+    </li>
+
     <li></li>
 
     <li>
-      <details {{ html.classNames([ { 'open' : request.matchesRoute(['alert', 'avatar', 'badge', 'card', 'carousel', 'chat', 'loading', 'progress', 'table', 'toast', 'tooltip']) }]) }}>
+      <details {{ html.classNames([ { 'open' : request.matchesRoute(['admin.audits.index', 'admin.audits.show']) }]) }}>
         <summary>
-          @!svg('tabler:users')
-          {{ t('admin.sidebar.users') }}
+          @!svg('tabler:settings')
+          {{ t('admin.sidebar.system') }}
         </summary>
         <ul>
           <li>
-            @!admin.sidebar.link({ text: t('admin.sidebar.users'), href: route('admin.users.index') })
+            @!admin.sidebar.link({ text: t('admin.sidebar.audits'), href: route('admin.audits.index') })
           </li>
         </ul>
       </details>

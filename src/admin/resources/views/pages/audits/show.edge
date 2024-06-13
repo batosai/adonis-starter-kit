@@ -1,0 +1,52 @@
+@admin.layout()
+  @!admin.breadcrumb({
+    items: [
+      { label: t('admin.sidebar.dashboard'), link: route('admin.dashboard') },
+      { label: t('admin.sidebar.audits'), link: route('admin.audits.index') },
+      { label: t('admin.action.show') }
+    ]
+  })
+
+  <div class="w-screen px-4 my-4 mb-auto md:w-full">
+    <h2>
+      @!admin.button.back({ href: route('admin.audits.index') })
+    </h2>
+
+    <div class="divider text-primary">{{ audit.auditableType }}</div>
+
+    <p class="mb-2 capitalize">
+        @if(audit.event === 'create')
+          @!jrmc.badge({ text: audit.event, class: 'badge-success' })
+        @elseif(audit.event === 'update')
+          @!jrmc.badge({ text: audit.event, class: 'badge-success' })
+        @elseif(audit.event === 'delete')
+          @!jrmc.badge({ text: audit.event, class: 'badge-error' })
+        @end
+      : {{ t('admin.audit.createdAt') }} {{ t('app.date', { value: audit.createdAt }) }}
+    </p>
+
+    <p class="mb-2">
+      @if(audit.metadata.user_fullname)
+        <span>{{ t('admin.audit.by') }} </span>
+        @!jrmc.badge({ text: audit.metadata.user_fullname, class: 'badge-info' })
+      @end
+      <span>{{ t('admin.audit.id') }} </span>
+      @!jrmc.badge({ text: audit.userId, class: 'badge-secondary' })
+    </p>
+    <p>
+      <span>{{ t('admin.audit.entity') }} </span>
+      @!jrmc.badge({ text: audit.auditableType, class: 'badge-info' })
+      <span>{{ t('admin.audit.id') }} </span>
+      @!jrmc.badge({ text: audit.auditableId, class: 'badge-secondary' })
+    </p>
+
+    <div class="divider">{{ t('admin.audit.newValues') }}</div>
+
+    <code>{{ inspect(audit.newValues) }}</code>
+
+    <div class="divider">{{ t('admin.audit.oldValues') }}</div>
+
+    <code>{{ inspect(audit.oldValues) }}</code>
+
+  </div>
+@end

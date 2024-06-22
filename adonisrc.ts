@@ -48,7 +48,8 @@ export default defineConfig({
     () => import('@jrmc/edge-components/edge_components_provider'),
     () => import('@jrmc/adonis-unpoly/unpoly_provider'),
     () => import('adonis-lucid-filter/provider'),
-    () => import('@stouder-io/adonis-auditing/auditing_provider')
+    () => import('@stouder-io/adonis-auditing/auditing_provider'),
+    () => import('@jrmc/adonis-attachment/attachment_provider')
   ],
 
   /*

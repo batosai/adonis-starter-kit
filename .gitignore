@@ -12,6 +12,7 @@ tmp/*
 
 # Frontend assets compiled code
 public/assets
+public/uploads
 
 # Build tools specific
 npm-debug.log

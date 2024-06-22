@@ -4,7 +4,7 @@
       <li class="avatar online">
         <div class="w-12 h-12 mask mask-squircle">
           @if (auth.user.avatar)
-            <img src="{{ auth.user.avatar.variants?.thumbnail?.url }}" loading="lazy" alt="" />
+            <img src="/{{ auth.user.avatar.path }}" loading="lazy" alt="" />
           @end
         </div>
       </li>

@@ -8,6 +8,8 @@ import UserSessionFilter from '#admin/filters/user_session_filter'
 import { inject } from '@adonisjs/core'
 import { UserValidator } from '#admin/validators/user_validator'
 
+import attachmentManager from '@jrmc/adonis-attachment/services/main'
+
 @inject()
 export default class UsersController {
 
@@ -35,7 +37,7 @@ export default class UsersController {
 
   async store({ request, response, bouncer, session, i18n, auth, up }: HttpContext) {
     await bouncer.with(UserPolicy).authorize('create')
-    // const avatar = request.file('avatar')!
+    const avatar = request.file('avatar')!
     /**
      * validateUsing new user account creation form
      */
@@ -51,9 +53,9 @@ export default class UsersController {
     const user = new User()
     await user.fill(payload)
 
-    // if (avatar) {
-    //   user.avatar = Attachment.fromFile(avatar)
-    // }
+    if (avatar) {
+      user.avatar = await attachmentManager.createFromFile(avatar)
+    }
     await user.save()
 
     session.flash('notification', {
@@ -83,7 +85,7 @@ export default class UsersController {
     const user = await User.findOrFail(request.param('id'))
 
     await bouncer.with(UserPolicy).authorize('update', user)
-    // const avatar = request.file('avatar')!
+    const avatar = request.file('avatar')!
 
     const payload = await request.validateUsing(UserValidator, {
       meta: {
@@ -94,9 +96,9 @@ export default class UsersController {
 
     await user.merge(payload)
 
-    // if (avatar) {
-    //   user.avatar = Attachment.fromFile(avatar)
-    // }
+    if (avatar) {
+      user.avatar = await attachmentManager.createFromFile(avatar)
+    }
     await user.save()
 
     session.flash('notification', {

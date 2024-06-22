@@ -9,7 +9,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Sign in form
 - [x] Logout
 - [x] List / create / delete users in admin page
-- [] Avatar upload by attachment-advanced
+- [ ] Avatar upload by [adonis-attachment](https://github.com/batosai/adonis-attachment)
 - [x] Forgot password
 - [x] Email create password
 - [x] Roles and permissions with AdonisJS bouncers
@@ -17,6 +17,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Last login at
 - [x] Form component
 - [x] Impersonating users
+- [ ] [Health](https://docs.adonisjs.com/guides/digging-deeper/health-checks)
 - [x] [Auditable](https://adonis-auditing.stouder.io)
 - [x] [DaysiUI](https://daisyui.com/)
 - [x] [Tailwind](https://tailwindcss.com/)

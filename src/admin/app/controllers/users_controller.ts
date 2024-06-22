@@ -97,8 +97,6 @@ export default class UsersController {
     // if (avatar) {
     //   user.avatar = Attachment.fromFile(avatar)
     // }
-    const dirty = user.$dirty
-    const original = user.$original
     await user.save()
 
     session.flash('notification', {
@@ -123,14 +121,11 @@ export default class UsersController {
     bouncer,
     session,
     i18n,
-    auth,
     up,
   }: HttpContext) {
     const { id } = params
     const user = await User.findOrFail(id)
     await bouncer.with(UserPolicy).authorize('delete', user)
-    const payload = user.serialize()
-    const fullname = user!.fullname
     await user.delete()
 
     session.flash('notification', {
@@ -151,7 +146,6 @@ export default class UsersController {
     bouncer,
     session,
     i18n,
-    auth,
     up,
   }: HttpContext) {
     const user = await User.findOrFail(request.param('id'))
@@ -185,7 +179,6 @@ export default class UsersController {
     bouncer,
     session,
     i18n,
-    auth,
     up,
   }: HttpContext) {
     const user = await User.findOrFail(request.param('id'))

@@ -17,7 +17,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Last login at
 - [x] Form component
 - [x] Impersonating users
-- [ ] [Health](https://docs.adonisjs.com/guides/digging-deeper/health-checks)
+- [x] [Health](https://docs.adonisjs.com/guides/digging-deeper/health-checks)
 - [x] [Auditable](https://adonis-auditing.stouder.io)
 - [x] [DaysiUI](https://daisyui.com/)
 - [x] [Tailwind](https://tailwindcss.com/)

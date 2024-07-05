@@ -64,7 +64,7 @@
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^2.0.2",
     "@iconify-json/tabler": "^1.1.114",
-    "@jrmc/adonis-attachment": "^1.0.0-2",
+    "@jrmc/adonis-attachment": "^1.0.0",
     "@jrmc/adonis-unpoly": "^1.0.1",
     "@jrmc/edge-components": "^2.0.0",
     "@stouder-io/adonis-auditing": "^1.1.7",
@@ -74,7 +74,8 @@
     "edge-iconify": "^2.0.1",
     "edge.js": "^6.0.2",
     "luxon": "^3.4.4",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "sharp": "^0.33.4"
   },
   "hotHook": {
     "boundaries": [

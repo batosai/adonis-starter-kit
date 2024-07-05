@@ -31,7 +31,7 @@
             <div class="avatar">
               <div class="w-12 h-12 mask mask-squircle">
                 @if (user.avatar)
-                  <img src="/{{ user.avatar.path }}" loading="lazy" alt="" />
+                  <img src="{{ user.avatar.getUrl('thumbnail') }}" loading="lazy" alt="" />
                 @end
               </div>
             </div>

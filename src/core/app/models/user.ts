@@ -10,7 +10,7 @@ import Roles from '#core/enums/roles'
 import UserFilter from '#core/models/filters/user_filter'
 import { Auditable } from '@stouder-io/adonis-auditing'
 import { attachment, Attachmentable } from '@jrmc/adonis-attachment'
-import type { Attachment } from '@jrmc/adonis-attachment/types'
+import type { Attachment } from '@jrmc/adonis-attachment/types/attachment'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],
@@ -44,8 +44,8 @@ export default class User extends compose(BaseModel, Filterable, Auditable, Auth
   declare disabled: boolean
 
   @attachment({
-    disk: 'local',
-    folder: 'uploads/avatars'
+    folder: 'uploads/avatars',
+    variants: ['thumbnail']
   })
   declare avatar: Attachment
 

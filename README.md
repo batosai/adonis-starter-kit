@@ -1,6 +1,9 @@
 # Starter kit for AdonisJS 6
 
-/!\ For AdonisJS v5 : [here](https://github.com/batosai/adonis-starter)
+⚠️ For AdonisJS v5 : [here](https://github.com/batosai/adonis-starter)
+
+🔥 @adonisjs/drive support
+
 
 A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.com) framework.
 
@@ -18,6 +21,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] Form component
 - [x] Impersonating users
 - [x] [Health](https://docs.adonisjs.com/guides/digging-deeper/health-checks)
+- [x] [Drive](https://docs.adonisjs.com/guides/digging-deeper/drive)
 - [x] [Auditable](https://adonis-auditing.stouder.io)
 - [x] [DaysiUI](https://daisyui.com/)
 - [x] [Tailwind](https://tailwindcss.com/)

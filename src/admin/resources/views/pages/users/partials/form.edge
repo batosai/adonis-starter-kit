@@ -28,8 +28,8 @@
 @if(user && user.avatar)
   <img
     class="object-cover w-40 mt-2"
-    src="{{ user.avatar.variants?.thumbnail?.url }}"
-    alt="variants?.thumbnail?.url"
+    src="{{ await user.avatar.getUrl('thumbnail') }}"
+    alt=""
     loading="lazy"
   />
 @end

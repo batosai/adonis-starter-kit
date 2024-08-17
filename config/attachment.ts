@@ -1,8 +1,6 @@
 import { defineConfig } from '@jrmc/adonis-attachment'
-import app from '@adonisjs/core/services/app'
 
 export default defineConfig({
-  basePath: app.publicPath(),
   converters: [
     {
       key: 'thumbnail',

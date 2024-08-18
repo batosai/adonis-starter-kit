@@ -112,6 +112,7 @@ export default defineConfig({
     ],
     forceExit: false,
   },
+
   metaFiles: [
     {
       pattern: 'src/**/resources/views/**/*.edge',
@@ -126,7 +127,13 @@ export default defineConfig({
       reloadServer: false,
     },
   ],
+
   directories: {
     audit_resolvers: 'src/core/app/audit_resolvers'
-  }
+  },
+
+  assetsBundler: false,
+  hooks: {
+    onBuildStarting: [() => import('@adonisjs/vite/build_hook')],
+  },
 })

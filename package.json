@@ -65,7 +65,7 @@
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^3.0.0",
     "@iconify-json/tabler": "^1.1.120",
-    "@jrmc/adonis-attachment": "^2.0.2",
+    "@jrmc/adonis-attachment": "^2.1.0",
     "@jrmc/adonis-unpoly": "^1.0.1",
     "@jrmc/edge-components": "^2.0.0",
     "@stouder-io/adonis-auditing": "^1.1.7",
@@ -88,6 +88,6 @@
     "extends": "@adonisjs/eslint-config/app"
   },
   "volta": {
-    "node": "20.16.0"
+    "node": "20.17.0"
   }
 }

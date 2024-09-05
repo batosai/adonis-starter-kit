@@ -7,7 +7,7 @@ import { readFile } from 'fs/promises'
 
 export default class extends BaseSeeder {
   async run() {
-    const buffer = await readFile(app.makePath('database/seeders/resources/me.jpg'))
+    const buffer = await readFile(app.makePath('database/seeders/resources/batosai.jpg'))
     const user = await User.create(
       {
         role: Roles.ADMIN,

@@ -15,7 +15,7 @@
           <a href="{{ route('auth.password.create') }}" class="font-semibold text-primary hover:text-secondary">{{ t('auth.session.forgotLink') }}</a>
         </div>
       </div>
-      @!jrmc.form.input({ type:'password', class: 'input-bordered bg-base-200' })
+      @!jrmc.form.password({ class: 'input-bordered bg-base-200' })
     @end
 
     @jrmc.form.control({ name: 'remember_me', label: false })

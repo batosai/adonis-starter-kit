@@ -34,6 +34,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 npm init adonisjs@latest -- -K="batosai/adonis-starter-kit"
 cd my-adonisjs-app
 cp .env.example .env
+node ace generate:key
 node ace migration:run
 node ace db:seed
 ```

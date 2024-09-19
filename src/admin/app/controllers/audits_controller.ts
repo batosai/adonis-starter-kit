@@ -1,10 +1,9 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import router from '@adonisjs/core/services/router'
-import AuditPolicy from '#core/policies/audit_policy'
 import Audit from '#core/models/audit'
+import AuditPolicy from '#core/policies/audit_policy'
 
 export default class AuditsController {
-
   async index({ view, request, bouncer }: HttpContext) {
     await bouncer.with(AuditPolicy).authorize('viewList')
 
@@ -15,7 +14,7 @@ export default class AuditsController {
     audits.baseUrl(router.builder().make('admin.audits.index'))
 
     return view.render('admin::pages/audits/index', {
-      audits
+      audits,
     })
   }
 
@@ -25,7 +24,7 @@ export default class AuditsController {
     const audit = await Audit.findOrFail(request.param('id'))
 
     return view.render('admin::pages/audits/show', {
-      audit
+      audit,
     })
   }
 }

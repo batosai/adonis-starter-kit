@@ -10,6 +10,12 @@ export const PASSWORD_MAX_LENGTH = 255
 
 export const UserValidator = vine.withMetaData<{ currentUser?: User; record?: User }>().compile(
   vine.object({
+    logo: vine
+      .file({
+        size: '2mb',
+        extnames: ['jpg', 'png', 'webp'],
+      })
+      .optional(),
     lastname: vine.string().trim().toCamelCase().minLength(MIN_LENGTH).maxLength(MAX_LENGTH),
     firstname: vine.string().trim().toCamelCase().minLength(MIN_LENGTH).maxLength(MAX_LENGTH),
     email: vine

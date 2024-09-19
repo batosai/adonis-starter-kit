@@ -4,7 +4,6 @@
 
 🔥 @adonisjs/drive support
 
-
 A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.com) framework.
 
 🔋 Batteries included:
@@ -29,7 +28,6 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] [Unpoly](https://unpoly.com/)
 - [x] [Vite](https://vitejs.dev/)
 
-
 # Installation
 
 ```bash
@@ -49,7 +47,6 @@ visite http://localhost:3333/admin
 
 <img src="screenshots/screen1.png">
 <img src="screenshots/screen2.png">
-
 
 ## Support
 

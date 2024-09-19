@@ -44,7 +44,7 @@ export default class User extends compose(BaseModel, Filterable, Auditable, Auth
   declare disabled: boolean
 
   @attachment({
-    folder: 'uploads/avatars',
+    folder: 'avatars',
     variants: ['thumbnail']
   })
   declare avatar: Attachment

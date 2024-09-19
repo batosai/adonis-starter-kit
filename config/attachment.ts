@@ -8,7 +8,7 @@ export default defineConfig({
       options: {
         resize: 300,
         format: 'webp',
-      }
-    }
-  ]
+      },
+    },
+  ],
 })

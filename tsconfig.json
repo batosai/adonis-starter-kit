@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "NodeNext",
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "isolatedModules": true,
@@ -23,21 +21,15 @@
     "declaration": false,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "@types/node"
-    ],
+    "types": ["@types/node"],
     "rootDir": "./",
     "outDir": "./build",
     "paths": {
-      "#audit_resolvers/*": [
-        "./src/core/app/audit_resolvers/*.js"
-      ]
+      "#audit_resolvers/*": ["./src/core/app/audit_resolvers/*.js"]
     }
   },
   "ts-node": {
     "swc": true
   },
-  "exclude": [
-    "./build"
-  ]
+  "exclude": ["./build"]
 }

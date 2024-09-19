@@ -50,7 +50,7 @@ export default defineConfig({
     () => import('adonis-lucid-filter/provider'),
     () => import('@stouder-io/adonis-auditing/auditing_provider'),
     () => import('@jrmc/adonis-attachment/attachment_provider'),
-    () => import('@adonisjs/drive/drive_provider')
+    () => import('@adonisjs/drive/drive_provider'),
   ],
 
   /*
@@ -129,7 +129,7 @@ export default defineConfig({
   ],
 
   directories: {
-    audit_resolvers: 'src/core/app/audit_resolvers'
+    audit_resolvers: 'src/core/app/audit_resolvers',
   },
 
   assetsBundler: false,

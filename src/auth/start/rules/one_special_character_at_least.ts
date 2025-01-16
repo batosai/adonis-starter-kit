@@ -6,7 +6,7 @@ export type Options = {}
 /**
  * Implementation
  */
-async function oneSpecialCharacterAtLeast(value: unknown, options: Options, field: FieldContext) {
+async function oneSpecialCharacterAtLeast(value: unknown, _options: Options, field: FieldContext) {
   if (typeof value !== 'string') {
     return
   }

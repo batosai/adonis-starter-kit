@@ -10,10 +10,9 @@ import { assert } from '@japa/assert'
 import { browserClient } from '@japa/browser-client'
 import { pluginAdonisJS } from '@japa/plugin-adonisjs'
 import type { Config } from '@japa/runner/types'
-import { chromium, firefox } from 'playwright'
+import { chromium } from 'playwright'
 import env from '#start/env'
 import i18n from '#tests/plugins/i18n'
-import sleep from '#tests/plugins/sleep'
 
 /**
  * This file is imported by the "bin/test.ts" entrypoint file

@@ -3,9 +3,7 @@ import { faker } from '@faker-js/faker'
 import { test } from '@japa/runner'
 import {
   MAX_LENGTH,
-  MAX_SIZE,
   MIN_LENGTH,
-  PASSWORD_MIN_LENGTH,
 } from '#admin/validators/user_validator'
 import Roles from '#core/enums/roles'
 import User from '#core/models/user'

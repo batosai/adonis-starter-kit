@@ -6,7 +6,7 @@ export type Options = {}
 /**
  * Implementation
  */
-async function oneUpperCaseAtLeast(value: unknown, options: Options, field: FieldContext) {
+async function oneUpperCaseAtLeast(value: unknown, _options: Options, field: FieldContext) {
   if (typeof value !== 'string') {
     return
   }

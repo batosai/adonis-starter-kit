@@ -6,7 +6,7 @@ export type Options = {}
 /**
  * Implementation
  */
-async function oneLowerCaseAtLeast(value: unknown, options: Options, field: FieldContext) {
+async function oneLowerCaseAtLeast(value: unknown, _options: Options, field: FieldContext) {
   const regex = new RegExp('(?=.*[a-z])')
   if (!regex.test(String(value))) {
     field.report(

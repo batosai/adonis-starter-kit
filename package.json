@@ -65,7 +65,7 @@
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^4.0.0",
     "@iconify-json/tabler": "^1.2.14",
-    "@jrmc/adonis-attachment": "^3.1.0",
+    "@jrmc/adonis-attachment": "^3.2.0",
     "@jrmc/adonis-unpoly": "^1.0.2",
     "@jrmc/edge-components": "^2.1.0",
     "@stouder-io/adonis-auditing": "^1.1.8",

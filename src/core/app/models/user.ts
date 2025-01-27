@@ -9,7 +9,7 @@ import { Filterable } from 'adonis-lucid-filter'
 import Roles from '#core/enums/roles'
 import UserFilter from '#core/models/filters/user_filter'
 import { Auditable } from '@stouder-io/adonis-auditing'
-import { attachment, Attachmentable } from '@jrmc/adonis-attachment'
+import { attachment } from '@jrmc/adonis-attachment'
 import type { Attachment } from '@jrmc/adonis-attachment/types/attachment'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -17,7 +17,7 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   passwordColumnName: 'password',
 })
 
-export default class User extends compose(BaseModel, Filterable, Auditable, AuthFinder, Attachmentable) {
+export default class User extends compose(BaseModel, Filterable, Auditable, AuthFinder) {
   static selfAssignPrimaryKey = true
   static $filter = () => UserFilter
   static rememberMeTokens = DbRememberMeTokensProvider.forModel(User)

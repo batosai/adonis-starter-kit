@@ -47,7 +47,7 @@ export default class User extends compose(BaseModel, Filterable, Auditable, Auth
     folder: 'avatars',
     variants: ['thumbnail']
   })
-  declare avatar: Attachment
+  declare avatar: Attachment | null
 
   @column.dateTime({ autoCreate: false })
   declare disabledOn: DateTime | null

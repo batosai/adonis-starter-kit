@@ -6,7 +6,7 @@ up-modal-box,
 up-drawer-box,
 up-cover-box,
 up-popup {
-  @apply bg-base-100;
+  @apply bg-base-100!;
   overflow-x: initial;
 }
 

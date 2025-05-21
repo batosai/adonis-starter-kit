@@ -1,8 +1,13 @@
-@import './unpoly.css';
+@import './unpoly.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@source "../../node_modules/@jrmc/edge-components/views";
+@source "../views/**/*.edge";
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
 
 /* remove bounce effet */
 html,

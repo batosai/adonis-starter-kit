@@ -12,8 +12,8 @@ if (document.querySelector('meta[name="mode"]')) {
 
 up.link.config.followSelectors.push('a[href]')
 up.form.config.submitSelectors.push(['form'])
-up.feedback.config.currentClasses.push(['active'])
-up.feedback.config.navSelectors.push(['nav'])
+up.status.config.currentClasses.push(['menu-active'])
+up.status.config.navSelectors.push(['nav'])
 
 up.layer.config.drawer.size = 'large'
 up.layer.config.drawer.position = 'right'

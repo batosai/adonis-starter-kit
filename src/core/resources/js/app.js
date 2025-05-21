@@ -1,3 +1,6 @@
+import 'unpoly/unpoly.css'
+import '../css/app.css'
+
 import Alpine from 'alpinejs'
 import 'unpoly'
 
@@ -53,7 +56,7 @@ up.confirm = function (element) {
   const colorButton = element.dataset.colorButton ?? 'btn-primary'
 
   const dialog = up.element.createFromHTML(`
-    <div class="modal modal-open z-[2000]" x-data="{}" @keyup.escape.window="$el.remove()">
+    <div class="modal modal-open z-2000" x-data="{}" @keyup.escape.window="$el.remove()">
       <div class="modal-box">
           <h3 class="font-bold text-lg">${message}</h3>
 

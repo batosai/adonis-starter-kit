@@ -4,18 +4,18 @@
   @end
 
   @jrmc.form({ action: route('auth.session.store'), error: false })
-    @jrmc.form.control({ name: 'email', class: 'w-full', label: t('form.login.email') })
-      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'bg-base-200' })
+    @jrmc.form.control({ name: 'email', label: t('form.login.email') })
+      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'w-full!' })
     @end
 
-    @jrmc.form.control({ name: 'password', class: 'w-full', label: false })
+    @jrmc.form.control({ name: 'password', label: false })
       <div class="flex items-center justify-between">
         @!jrmc.form.label({ text: t('form.login.password'), class: 'cursor-pointer', for: 'password' })
         <div class="text-sm">
           <a href="{{ route('auth.password.create') }}" class="font-semibold text-primary hover:text-secondary">{{ t('auth.session.forgotLink') }}</a>
         </div>
       </div>
-      @!jrmc.form.password({ class: 'bg-base-200' })
+      @!jrmc.form.password({ class: 'w-full!' })
     @end
 
     @jrmc.form.control({ name: 'remember_me', label: false })

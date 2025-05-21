@@ -2,8 +2,10 @@
 
 @import 'tailwindcss';
 
-@source "../../node_modules/@jrmc/edge-components/views";
+@source "../../../../node_modules/@jrmc/edge-components/views";
 @source "../views/**/*.edge";
+@source "../../../src/admin/resources/views/**/*.edge";
+@source "../../../src/auth/resources/views/**/*.edge";
 
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
@@ -37,26 +39,24 @@ up-drawer * {
 }
 
 /* override form */
-@layer components {
-  .input {
-    @apply input;
-    @apply bg-base-200;
-  }
+.input {
+  @apply input;
+  @apply bg-base-200;
+}
 
-  .file-input {
-    @apply file-input;
-    @apply bg-base-200;
-  }
+.file-input {
+  @apply file-input;
+  @apply bg-base-200;
+}
 
-  .textarea {
-    @apply textarea;
-    @apply bg-base-200;
-  }
+.textarea {
+  @apply textarea;
+  @apply bg-base-200;
+}
 
-  .select {
-    @apply select;
-    @apply bg-base-200;
-  }
+.select {
+  @apply select;
+  @apply bg-base-200;
 }
 
 /* override daisyUI */

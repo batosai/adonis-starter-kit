@@ -37,25 +37,26 @@ up-drawer * {
 }
 
 /* override form */
+@layer components {
+  .input {
+    @apply input;
+    @apply bg-base-200;
+  }
 
-.input {
-  @apply input-bordered;
-  @apply bg-base-200;
-}
+  .file-input {
+    @apply file-input;
+    @apply bg-base-200;
+  }
 
-.file-input {
-  @apply file-input-bordered;
-  @apply bg-base-200;
-}
+  .textarea {
+    @apply textarea;
+    @apply bg-base-200;
+  }
 
-.textarea {
-  @apply textarea-bordered;
-  @apply bg-base-200;
-}
-
-.select {
-  @apply select-bordered;
-  @apply bg-base-200;
+  .select {
+    @apply select;
+    @apply bg-base-200;
+  }
 }
 
 /* override daisyUI */

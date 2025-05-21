@@ -5,7 +5,7 @@
 
   @jrmc.form({ action: route('auth.session.store'), error: false })
     @jrmc.form.control({ name: 'email', class: 'w-full', label: t('form.login.email') })
-      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'input-bordered bg-base-200' })
+      @!jrmc.form.input({ type:'email', placeholder: 'john.doe@adonisjs.com', class: 'bg-base-200' })
     @end
 
     @jrmc.form.control({ name: 'password', class: 'w-full', label: false })
@@ -15,7 +15,7 @@
           <a href="{{ route('auth.password.create') }}" class="font-semibold text-primary hover:text-secondary">{{ t('auth.session.forgotLink') }}</a>
         </div>
       </div>
-      @!jrmc.form.password({ class: 'input-bordered bg-base-200' })
+      @!jrmc.form.password({ class: 'bg-base-200' })
     @end
 
     @jrmc.form.control({ name: 'remember_me', label: false })

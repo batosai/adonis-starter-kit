@@ -27,6 +27,7 @@ A Node.js, TypeScript & sqlite starter built upon [Adonis JS](https://adonisjs.c
 - [x] [Alpinejs](https://alpinejs.dev/)
 - [x] [Unpoly](https://unpoly.com/)
 - [x] [Vite](https://vitejs.dev/)
+- [x] Tests
 
 # Installation
 
@@ -44,6 +45,8 @@ node ace db:seed
 ```bash
 npm run dev
 visite http://localhost:3333/admin
+
+npm test
 ```
 
 <img src="https://raw.githubusercontent.com/batosai/adonis-starter-kit/main/screenshots/screen1.png">

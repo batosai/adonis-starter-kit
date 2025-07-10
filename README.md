@@ -46,8 +46,8 @@ npm run dev
 visite http://localhost:3333/admin
 ```
 
-<img src="screenshots/screen1.png">
-<img src="screenshots/screen2.png">
+<img src="https://raw.githubusercontent.com/batosai/adonis-starter-kit/main/screenshots/screen1.png">
+<img src="https://raw.githubusercontent.com/batosai/adonis-starter-kit/main/screenshots/screen2.png">
 
 ## Support
 

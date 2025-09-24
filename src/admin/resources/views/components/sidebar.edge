@@ -40,7 +40,7 @@
 
     <li>
       @!admin.sidebar.link({
-        class: request.matchesRoute(['admin.dashboard']) ? 'active' : null,
+        'up-alias': '/admin/dashboard/*',
         text: t('admin.sidebar.dashboard'),
         href: route('admin.dashboard'),
         icon: 'tabler:dashboard',
@@ -50,7 +50,7 @@
     <li>
       <li>
         @!admin.sidebar.link({
-          class: request.matchesRoute(['admin.user.index', 'admin.user.create', 'admin.user.edit']) ? 'active' : null,
+          'up-alias': '/admin/users/*',
           text: t('admin.sidebar.users'),
           href: route('admin.users.index'),
           icon: 'tabler:users',
@@ -68,7 +68,11 @@
         </summary>
         <ul>
           <li>
-            @!admin.sidebar.link({ text: t('admin.sidebar.audits'), href: route('admin.audits.index') })
+            @!admin.sidebar.link({
+              'up-alias': '/admin/audits/*',
+              text: t('admin.sidebar.audits'),
+              href: route('admin.audits.index')
+            })
           </li>
         </ul>
       </details>
